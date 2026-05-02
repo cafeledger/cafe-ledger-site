@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cafe Ledger Services</title>
+  <meta name="description" content="Bookkeeping, reporting, and financial support for coffee shops and bakeries." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --green: #2d6a2d;
+      --green-dark: #1e4a1e;
+      --cream: #f0ede8;
+      --cream-dark: #e4e0d8;
+      --ink: #1a1a18;
+      --ink-light: #3a3a36;
+      --rule: rgba(45, 106, 45, 0.22);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+    .page { max-width: 900px; margin: 0 auto; padding: 0 2.5rem; }
+    nav {
+      border-bottom: 0.5px solid var(--rule);
+      padding: 1.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-wordmark {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: var(--green);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.25rem; list-style: none; }
+    .nav-links a {
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--green); }
+    .hero {
+      padding: 5.5rem 0 5rem;
+      border-bottom: 0.5px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 4rem;
+      align-items: end;
+    }
+    .hero-eyebrow, .section-label {
+      font-size: 13px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1.4rem;
+      font-weight: 400;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 64px;
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--ink);
+    }
+    .hero-title em { font-style: italic; color: var(--green); }
+    .hero-copy {
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--ink-light);
+      font-weight: 300;
+      max-width: 520px;
+    }
+    .intro-note {
+      padding: 3.25rem 0;
+      border-bottom: 0.5px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr 1.85fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .intro-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 38px;
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+    .intro-heading em { font-style: italic; color: var(--green); }
+    .intro-text {
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--ink-light);
+    }
+    .services {
+      padding: 5rem 0;
+      border-bottom: 0.5px solid var(--rule);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 2.5rem;
+    }
+    .service-card {
+      background: var(--cream-dark);
+      padding: 2.25rem 1.75rem;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 0.5px solid transparent;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+    .service-card:hover {
+      border-color: var(--rule);
+      background: #dedad3;
+      transform: translateY(-2px);
+    }
+    .service-num {
+      font-family: 'IM Fell English', Georgia, serif;
+      font-size: 34px;
+      color: var(--green);
+      opacity: 0.32;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .service-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 0.85rem;
+    }
+    .service-fit {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 400;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .service-desc {
+      font-size: 15.5px;
+      line-height: 1.8;
+      color: var(--ink-light);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+    .service-list {
+      list-style: none;
+      border-top: 0.5px solid var(--rule);
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+    }
+    .service-list li {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--ink-light);
+      padding: 0.55rem 0;
+      border-bottom: 0.5px solid rgba(45, 106, 45, 0.12);
+    }
+    .service-list li::before { content: "— "; color: var(--green); }
+    .add-ons {
+      padding: 5rem 0;
+      border-bottom: 0.5px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr 1.85fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .add-ons-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 48px;
+      font-weight: 300;
+      line-height: 1.12;
+      color: var(--ink);
+      position: sticky;
+      top: 2rem;
+    }
+    .add-ons-title em { font-style: italic; color: var(--green); }
+    .add-ons-list { list-style: none; }
+    .add-ons-list li {
+      padding: 1.4rem 0;
+      border-bottom: 0.5px solid var(--rule);
+      display: flex;
+      gap: 1.75rem;
+      align-items: flex-start;
+    }
+    .add-ons-list li:first-child { border-top: 0.5px solid var(--rule); }
+    .add-on-word {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      min-width: 125px;
+      margin-top: 3px;
+    }
+    .add-on-desc {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--ink-light);
+      font-weight: 300;
+    }
+    .cta-band {
+      background: var(--green);
+      padding: 5.5rem 2.5rem;
+      text-align: center;
+    }
+    .cta-band-eyebrow {
+      font-size: 13px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(240,237,232,0.55);
+      margin-bottom: 1.4rem;
+      font-weight: 400;
+    }
+    .cta-band-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 52px;
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.12;
+      margin-bottom: 0.6rem;
+    }
+    .cta-band-title em { font-style: italic; opacity: 0.72; }
+    .cta-band-sub {
+      font-size: 16px;
+      color: rgba(240,237,232,0.7);
+      margin: 0 auto 2.75rem;
+      font-weight: 300;
+      max-width: 620px;
+      line-height: 1.8;
+    }
+    .btn-cream {
+      background: var(--cream);
+      color: var(--green);
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 1rem 2.75rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+    .btn-cream:hover { background: var(--cream-dark); }
+    footer {
+      border-top: 0.5px solid var(--rule);
+      padding: 2.75rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-mark {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      text-decoration: none;
+    }
+    .footer-email {
+      font-size: 15px;
+      color: var(--green);
+      text-decoration: none;
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+    .footer-email:hover { opacity: 1; }
+    .footer-copy { font-size: 13px; color: var(--ink-light); opacity: 0.4; }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 720px) {
+      body { font-size: 17px; line-height: 1.7; }
+      .page { padding: 0 1.25rem; }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.25rem 0;
+      }
+      .nav-wordmark { font-size: 20px; letter-spacing: 0.18em; }
+      .nav-links {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1rem;
+      }
+      .nav-links a { font-size: 12px; letter-spacing: 0.14em; }
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        padding: 3.25rem 0;
+      }
+      .hero-eyebrow, .section-label, .cta-band-eyebrow {
+        font-size: 11px;
+        letter-spacing: 0.22em;
+      }
+      .hero-title {
+        font-size: clamp(40px, 13vw, 48px);
+        line-height: 1.05;
+      }
+      .hero-copy, .intro-text, .add-on-desc {
+        font-size: 15.5px;
+        line-height: 1.8;
+      }
+      .intro-note, .add-ons {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 3.5rem 0;
+      }
+      .intro-heading, .add-ons-title {
+        position: static;
+        font-size: 38px;
+      }
+      .services { padding: 3.5rem 0; }
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        margin-top: 2rem;
+      }
+      .service-card {
+        min-height: auto;
+        padding: 1.85rem 1.5rem;
+      }
+      .service-title { font-size: 28px; }
+      .add-ons-list li {
+        flex-direction: column;
+        gap: 0.45rem;
+        padding: 1.25rem 0;
+      }
+      .add-on-word { min-width: auto; }
+      .cta-band { padding: 4rem 1.25rem; }
+      .cta-band-title { font-size: 38px; }
+      .cta-band-sub {
+        font-size: 15.5px;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+      }
+      .btn-cream {
+        width: 100%;
+        text-align: center;
+        padding: 1.05rem 1rem;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+      }
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 0.65rem;
+        padding: 2rem 0;
+      }
+    }
+    @media (max-width: 420px) {
+      .page { padding: 0 1rem; }
+      .hero-title { font-size: 39px; }
+      .nav-links { gap: 0.65rem 0.85rem; }
+      .nav-links a, .btn-cream { letter-spacing: 0.12em; }
+      .cta-band-title, .intro-heading, .add-ons-title { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav>
+      <a href="index.html" class="nav-wordmark">Cafe Ledger</a>
+      <ul class="nav-links">
+        <li><a href="index.html#tools">Tools</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="index.html#how-it-works">How It Works</a></li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main>
+    <div class="page">
+      <section class="hero fade-up">
+        <div>
+          <p class="hero-eyebrow">Accounting · Clarity · Profit</p>
+          <h1 class="hero-title">Financial support for<br><em>growing</em> shops.</h1>
+        </div>
+        <p class="hero-copy">Simple bookkeeping, reporting, and financial guidance for coffee shops and bakeries that want clearer numbers, better decisions, and more control over cash.</p>
+      </section>
+    </div>
+
+    <div class="page">
+      <section class="intro-note fade-up">
+        <h2 class="intro-heading">Start simple.<br><em>Build clarity.</em></h2>
+        <p class="intro-text">Cafe Ledger is built for shop owners who do not need more accounting jargon. You need clean records, clear reports, and practical support that helps you understand what is happening inside your business.</p>
+      </section>
+    </div>
+
+    <div class="page">
+      <section class="services">
+        <p class="section-label">Services</p>
+        <div class="services-grid">
+          <article class="service-card fade-up">
+            <div>
+              <span class="service-num">I</span>
+              <h2 class="service-title">Start with Clarity</h2>
+              <p class="service-fit">For shops getting a handle on their numbers</p>
+              <p class="service-desc">A simple starting point for owners who want organized books and a clear view of weekly sales, labor, costs, and cash.</p>
+              <ul class="service-list">
+                <li>Monthly bookkeeping and clean records</li>
+                <li>Simple profit and cash flow reporting</li>
+                <li>Weekly tracker setup</li>
+                <li>Clear breakdown of where money is going</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card fade-up" style="transition-delay:0.1s">
+            <div>
+              <span class="service-num">II</span>
+              <h2 class="service-title">Build Control</h2>
+              <p class="service-fit">For shops ready to improve margins</p>
+              <p class="service-desc">For owners who want better visibility into pricing, labor, ingredients, and the small leaks that quietly drain profit.</p>
+              <ul class="service-list">
+                <li>Monthly financial reports with insights</li>
+                <li>Labor and ingredient cost review</li>
+                <li>Profit leak review</li>
+                <li>Ongoing support for financial questions</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card fade-up" style="transition-delay:0.2s">
+            <div>
+              <span class="service-num">III</span>
+              <h2 class="service-title">Ongoing Support</h2>
+              <p class="service-fit">For growing cafes and bakeries</p>
+              <p class="service-desc">A more structured level of support for shops that want consistent financial oversight as the business grows.</p>
+              <ul class="service-list">
+                <li>Full bookkeeping and reporting</li>
+                <li>Regular financial check-ins</li>
+                <li>Support with pricing, costs, and planning</li>
+                <li>Clean systems to support growth</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <div class="page">
+      <section class="add-ons fade-up">
+        <h2 class="add-ons-title">Additional<br><em>support.</em></h2>
+        <ul class="add-ons-list">
+          <li><span class="add-on-word">Clean-up</span><p class="add-on-desc">Catch-up bookkeeping and cleanup of past records so your numbers are easier to trust and use.</p></li>
+          <li><span class="add-on-word">Tax-ready</span><p class="add-on-desc">Organized financial records and reports that help make tax time less stressful.</p></li>
+          <li><span class="add-on-word">Systems</span><p class="add-on-desc">Simple setup support for tools like QuickBooks, trackers, and reporting workflows.</p></li>
+          <li><span class="add-on-word">Planning</span><p class="add-on-desc">Practical support around pricing, costs, cash flow, and the decisions that affect profit.</p></li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="cta-band">
+      <p class="cta-band-eyebrow">Work With Cafe Ledger</p>
+      <h2 class="cta-band-title">Ready for clearer numbers<br><em>and better decisions?</em></h2>
+      <p class="cta-band-sub">Start with a simple conversation about where your shop is now, what feels messy, and what kind of support would actually help.</p>
+      <a href="mailto:hello@cafeledger.com" class="btn-cream">Start a Conversation</a>
+    </section>
+  </main>
+
+  <div class="page">
+    <footer>
+      <a href="index.html" class="footer-mark">Cafe Ledger</a>
+      <a href="mailto:hello@cafeledger.com" class="footer-email">hello@cafeledger.com</a>
+      <span class="footer-copy">&copy; 2026 Cafe Ledger. All rights reserved.</span>
+    </footer>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
