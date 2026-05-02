@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cafe Ledger — Simple Financial Tools for Cafe Owners</title>
+  <meta name="description" content="Simple financial tools for coffee shop and bakery owners to track costs, control cash, and keep more money." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green:      #2d6a2d;
+      --green-dark: #1e4a1e;
+      --cream:      #f0ede8;
+      --cream-dark: #e4e0d8;
+      --ink:        #1a1a18;
+      --ink-light:  #3a3a36;
+      --rule:       rgba(45, 106, 45, 0.22);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    /* NAV */
+    nav {
+      border-bottom: 0.5px solid var(--rule);
+      padding: 1.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-wordmark {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: var(--green);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.25rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green); }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      padding: 5.5rem 0 5rem;
+      border-bottom: 0.5px solid var(--rule);
+    }
+    .hero-eyebrow {
+      font-size: 13px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1.4rem;
+      font-weight: 400;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 64px;
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 1.4rem;
+    }
+    .hero-title em { font-style: italic; color: var(--green); }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--ink-light);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+      font-style: italic;
+    }
+    .hero-body {
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--ink-light);
+      margin-bottom: 2.25rem;
+      font-weight: 300;
+    }
+    .hero-cta-group {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--green);
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--green-dark); }
+    .btn-ghost {
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green);
+      text-decoration: none;
+      border-bottom: 0.5px solid var(--green);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+    .btn-ghost:hover { opacity: 0.6; }
+
+    /* LOGO */
+    .hero-logo-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-logo-wrap img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      display: block;
+    }
+
+    /* ORNAMENT RULE */
+    .ornament-rule {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      padding: 3.25rem 0;
+    }
+    .ornament-rule::before,
+    .ornament-rule::after {
+      content: '';
+      flex: 1;
+      height: 0.5px;
+      background: var(--rule);
+    }
+    .ornament-text {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 14px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--green);
+      white-space: nowrap;
+    }
+
+    /* TOOLS */
+    .tools {
+      padding: 0 0 5rem;
+      border-bottom: 0.5px solid var(--rule);
+    }
+    .section-label {
+      font-size: 13px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+    }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .tool-card {
+      background: var(--cream-dark);
+      padding: 2.25rem 1.75rem;
+      border: 0.5px solid transparent;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .tool-card:hover { border-color: var(--rule); background: #dedad3; }
+    .tool-num {
+      font-family: 'IM Fell English', Georgia, serif;
+      font-size: 34px;
+      color: var(--green);
+      opacity: 0.32;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .tool-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.8rem;
+    }
+    .tool-desc {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--ink-light);
+      font-weight: 300;
+    }
+
+    /* VALUES */
+    .values {
+      padding: 5rem 0;
+      border-bottom: 0.5px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr 1.85fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .values-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 48px;
+      font-weight: 300;
+      line-height: 1.12;
+      color: var(--ink);
+      position: sticky;
+      top: 2rem;
+    }
+    .values-heading em { font-style: italic; color: var(--green); }
+    .values-list { list-style: none; }
+    .values-list li {
+      padding: 1.4rem 0;
+      border-bottom: 0.5px solid var(--rule);
+      display: flex;
+      gap: 1.75rem;
+      align-items: flex-start;
+    }
+    .values-list li:first-child { border-top: 0.5px solid var(--rule); }
+    .value-word {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      min-width: 110px;
+      margin-top: 3px;
+    }
+    .value-desc {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--ink-light);
+      font-weight: 300;
+    }
+
+    /* HOW IT WORKS */
+    .process {
+      padding: 5rem 0;
+      border-bottom: 0.5px solid var(--rule);
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 2.5rem;
+    }
+    .process-step {
+      padding: 0 1.5rem 0 0;
+      position: relative;
+    }
+    .process-step::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 0.5px;
+      background: var(--rule);
+    }
+    .process-step:last-child::after { display: none; }
+    .process-step:not(:first-child) { padding-left: 1.5rem; }
+    .process-n {
+      font-family: 'IM Fell English', Georgia, serif;
+      font-size: 46px;
+      color: var(--green);
+      opacity: 0.2;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .process-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+      color: var(--ink);
+    }
+    .process-desc {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--ink-light);
+      font-weight: 300;
+    }
+
+    /* CTA BAND */
+    .cta-band {
+      background: var(--green);
+      padding: 5.5rem 2.5rem;
+      text-align: center;
+    }
+    .cta-band-eyebrow {
+      font-size: 13px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(240,237,232,0.55);
+      margin-bottom: 1.4rem;
+      font-weight: 400;
+    }
+    .cta-band-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 52px;
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.12;
+      margin-bottom: 0.6rem;
+    }
+    .cta-band-title em { font-style: italic; opacity: 0.72; }
+    .cta-band-sub {
+      font-size: 16px;
+      color: rgba(240,237,232,0.6);
+      margin-bottom: 2.75rem;
+      font-weight: 300;
+    }
+    .btn-cream {
+      background: var(--cream);
+      color: var(--green);
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 1rem 2.75rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+    .btn-cream:hover { background: var(--cream-dark); }
+
+    /* FOOTER */
+    footer {
+      border-top: 0.5px solid var(--rule);
+      padding: 2.75rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-mark {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      text-decoration: none;
+    }
+    .footer-email {
+      font-size: 15px;
+      color: var(--green);
+      text-decoration: none;
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+    .footer-email:hover { opacity: 1; }
+    .footer-copy {
+      font-size: 13px;
+      color: var(--ink-light);
+      opacity: 0.4;
+    }
+
+    /* ANIMATIONS */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 720px) {
+      .page { padding: 0 1.5rem; }
+      .hero { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 0; }
+      .hero-logo-wrap { order: -1; }
+      .hero-logo-wrap img { max-width: 220px; margin: 0 auto; }
+      .hero-title { font-size: 48px; }
+      .tools-grid { grid-template-columns: 1fr; gap: 2px; }
+      .values { grid-template-columns: 1fr; gap: 2.5rem; }
+      .values-heading { position: static; font-size: 38px; }
+      .process-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem 0; }
+      .process-step::after { display: none; }
+      .process-step { padding: 0 0 2rem; border-bottom: 0.5px solid var(--rule); }
+      .process-step:nth-child(odd) { padding-right: 1.25rem; }
+      .process-step:nth-child(even) { padding-left: 1.25rem; border-left: 0.5px solid var(--rule); }
+      .cta-band-title { font-size: 38px; }
+      footer { flex-direction: column; text-align: center; gap: 0.5rem; }
+      .nav-links { gap: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <nav>
+      <a href="#" class="nav-wordmark">Cafe Ledger</a>
+      <ul class="nav-links">
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="page">
+    <div class="hero">
+      <div class="hero-text fade-up">
+        <p class="hero-eyebrow">Accounting · Clarity · Profit</p>
+        <h1 class="hero-title">Stop guessing<br>your cafe<br><em>profits.</em></h1>
+        <p class="hero-sub">Simple financial tools for coffee shop &amp; bakery owners to track costs, control cash, and keep more money.</p>
+        <p class="hero-body">You don't need complicated accounting. You need clear numbers you can actually use. Start with simple tools built for real cafe owners.</p>
+        <div class="hero-cta-group">
+          <a href="#tools" class="btn-primary">&#8675; Download Free Profit Tracker</a>
+          <a href="#how-it-works" class="btn-ghost">See How It Works</a>
+        </div>
+      </div>
+      <div class="hero-logo-wrap fade-up" style="transition-delay:0.15s">
+        <img src="./logo.svg" alt="Cafe Ledger Accounting Clarity Profit" />
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="tools">
+    <div class="ornament-rule">
+      <span class="ornament-text">Start Here</span>
+    </div>
+    <div class="tools">
+      <p class="section-label">Free Tools for Cafe Owners</p>
+      <div class="tools-grid">
+        <div class="tool-card fade-up">
+          <span class="tool-num">I</span>
+          <p class="tool-title">Weekly Profit Tracker</p>
+          <p class="tool-desc">Track your sales, labor, and costs in one place — and actually see your profit week over week.</p>
+        </div>
+        <div class="tool-card fade-up" style="transition-delay:0.1s">
+          <span class="tool-num">II</span>
+          <p class="tool-title">Cost Control Guide</p>
+          <p class="tool-desc">Identify where your money is leaking — ingredients, waste, labor — before it quietly kills your margins.</p>
+        </div>
+        <div class="tool-card fade-up" style="transition-delay:0.2s">
+          <span class="tool-num">III</span>
+          <p class="tool-title">Cash Flow Snapshot</p>
+          <p class="tool-desc">Know if you're actually making money — not just selling coffee. A simple view of what's coming in and going out.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="about">
+    <div class="values fade-up">
+      <div>
+        <h2 class="values-heading">Built for<br><em>cafe</em><br>owners.</h2>
+      </div>
+      <ul class="values-list">
+        <li>
+          <span class="value-word">Accounting</span>
+          <p class="value-desc">Clean numbers without the overwhelm. We strip away the complexity so you can focus on running your shop.</p>
+        </li>
+        <li>
+          <span class="value-word">Clarity</span>
+          <p class="value-desc">Know exactly where your money is going each week — no jargon, no confusion, no guesswork.</p>
+        </li>
+        <li>
+          <span class="value-word">Profit</span>
+          <p class="value-desc">Fix the leaks and keep more of what you earn. Better numbers lead to better decisions and a healthier business.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page" id="how-it-works">
+    <div class="process fade-up">
+      <p class="section-label">How It Works</p>
+      <div class="process-grid">
+        <div class="process-step">
+          <p class="process-n">1</p>
+          <p class="process-title">Download the Tracker</p>
+          <p class="process-desc">Start with a simple tool designed for cafe owners — no accounting background needed.</p>
+        </div>
+        <div class="process-step">
+          <p class="process-n">2</p>
+          <p class="process-title">Track Weekly Numbers</p>
+          <p class="process-desc">Log your sales, labor, and costs in one place. Takes less than 10 minutes a week.</p>
+        </div>
+        <div class="process-step">
+          <p class="process-n">3</p>
+          <p class="process-title">Spot Problems Early</p>
+          <p class="process-desc">See where money is leaking before it hurts your business — waste, overordering, labor creep.</p>
+        </div>
+        <div class="process-step">
+          <p class="process-n">4</p>
+          <p class="process-title">Improve Your Profit</p>
+          <p class="process-desc">Make smarter decisions with clear numbers. Build habits that separate thriving cafes from struggling ones.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <p class="cta-band-eyebrow">Get Started Free</p>
+    <h2 class="cta-band-title">Start understanding your numbers<br><em>this week.</em></h2>
+    <p class="cta-band-sub">Download the free cafe profit tracker and take control of your cash.</p>
+    <a href="mailto:hello@cafeledger.com" class="btn-cream">&#8675; Download Free Tracker</a>
+  </div>
+
+  <div class="page">
+    <footer>
+      <a href="#" class="footer-mark">Cafe Ledger</a>
+      <a href="mailto:hello@cafeledger.com" class="footer-email">hello@cafeledger.com</a>
+      <span class="footer-copy">&copy; 2026 Cafe Ledger. All rights reserved.</span>
+    </footer>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
