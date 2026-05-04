@@ -3,275 +3,555 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cafe Ledger Services</title>
-  <meta name="description" content="Bookkeeping, reporting, and financial support for coffee shops and bakeries." />
+  <title>Cafe Ledger Services | Financial Support for Cafes & Bakeries</title>
+  <meta name="description" content="Bookkeeping, reporting, and financial support for coffee shops and bakeries. Clear pricing, real results." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
     :root {
-      --green: #2d6a2d;
-      --green-dark: #1e4a1e;
-      --cream: #f0ede8;
-      --cream-dark: #e4e0d8;
-      --ink: #1a1a18;
-      --ink-light: #3a3a36;
-      --rule: rgba(45, 106, 45, 0.22);
+      --green:       #2d6a2d;
+      --green-dark:  #1e4a1e;
+      --deep-green:  #1c3d1c;
+      --cream:       #f0ede8;
+      --cream-dark:  #e4e0d8;
+      --cream-mid:   #ece8e2;
+      --ink:         #1a1a18;
+      --ink-mid:     #3a3a36;
+      --ink-light:   #5a5a52;
+      --rule:        rgba(45,106,45,0.2);
     }
+
     html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Jost', sans-serif;
       background: var(--cream);
       color: var(--ink);
       font-weight: 300;
-      font-size: 18px;
+      font-size: 17px;
       line-height: 1.75;
       overflow-x: hidden;
     }
-    .page { max-width: 900px; margin: 0 auto; padding: 0 2.5rem; }
+
+    /* NAV */
     nav {
-      border-bottom: 0.5px solid var(--rule);
-      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .nav-wordmark {
+    .nav-logo {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 22px;
       font-weight: 500;
-      letter-spacing: 0.2em;
-      color: var(--green);
+      letter-spacing: 0.22em;
       text-transform: uppercase;
+      color: var(--green);
       text-decoration: none;
     }
-    .nav-links { display: flex; gap: 2.25rem; list-style: none; }
+    .nav-links {
+      display: flex;
+      gap: 2.25rem;
+      list-style: none;
+      align-items: center;
+      flex-wrap: wrap;
+    }
     .nav-links a {
-      font-size: 14px;
+      font-size: 13px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--ink-light);
+      color: var(--ink-mid);
       text-decoration: none;
       font-weight: 400;
       transition: color 0.2s;
     }
-    .nav-links a:hover, .nav-links a.active { color: var(--green); }
+    .nav-links a:hover { color: var(--green); }
+    .nav-links .active { color: var(--green); border-bottom: 1px solid var(--green); padding-bottom: 1px; }
+
+    /* HERO */
     .hero {
-      padding: 5.5rem 0 5rem;
-      border-bottom: 0.5px solid var(--rule);
-      display: grid;
-      grid-template-columns: 1fr 1.25fr;
-      gap: 4rem;
-      align-items: end;
+      background: var(--deep-green);
+      padding: 5.5rem 2rem 5rem;
     }
-    .hero-eyebrow, .section-label {
-      font-size: 13px;
-      letter-spacing: 0.28em;
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 1.4rem;
+      color: rgba(240,237,232,0.55);
       font-weight: 400;
+      margin-bottom: 1.25rem;
     }
     .hero-title {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 64px;
+      font-size: clamp(44px, 6vw, 68px);
       font-weight: 300;
-      line-height: 1.05;
-      color: var(--ink);
+      line-height: 1.08;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
     }
-    .hero-title em { font-style: italic; color: var(--green); }
+    .hero-title em { font-style: italic; color: rgba(240,237,232,0.65); }
     .hero-copy {
       font-size: 16px;
       line-height: 1.9;
-      color: var(--ink-light);
+      color: rgba(240,237,232,0.7);
       font-weight: 300;
-      max-width: 520px;
+      margin-bottom: 2rem;
     }
-    .intro-note {
-      padding: 3.25rem 0;
-      border-bottom: 0.5px solid var(--rule);
+    .hero-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 0.6rem 1.1rem;
+      font-size: 13px;
+      color: rgba(240,237,232,0.8);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+    .hero-note::before { content: ""; display: none; }
+    .hero-right {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 2.5rem;
+    }
+    .hero-right-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 1.25rem;
+      line-height: 1.3;
+    }
+    .hero-right-list {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+    .hero-right-list li {
+      font-size: 14px;
+      color: rgba(240,237,232,0.7);
+      padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-weight: 300;
+    }
+    .hero-right-list li::before { content: "✓"; color: rgba(240,237,232,0.5); flex-shrink: 0; }
+    .btn-cream {
+      display: inline-block;
+      background: var(--cream);
+      color: var(--deep-green);
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.75rem;
+      text-decoration: none;
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-cream:hover { background: var(--cream-dark); }
+
+    /* ORNAMENT */
+    .ornament-rule {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 3rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .ornament-rule::before,
+    .ornament-rule::after {
+      content: '';
+      flex: 1;
+      height: 0.5px;
+      background: var(--rule);
+    }
+    .ornament-text {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 13px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--green);
+      white-space: nowrap;
+    }
+
+    /* INTRO */
+    .intro {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
       display: grid;
-      grid-template-columns: 1fr 1.85fr;
+      grid-template-columns: 1fr 1.6fr;
       gap: 5rem;
       align-items: start;
+      border-bottom: 1px solid var(--rule);
     }
     .intro-heading {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 38px;
-      font-weight: 300;
-      line-height: 1.15;
-      color: var(--ink);
-    }
-    .intro-heading em { font-style: italic; color: var(--green); }
-    .intro-text {
-      font-size: 16px;
-      line-height: 1.9;
-      color: var(--ink-light);
-    }
-    .services {
-      padding: 5rem 0;
-      border-bottom: 0.5px solid var(--rule);
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      margin-top: 2.5rem;
-    }
-    .service-card {
-      background: var(--cream-dark);
-      padding: 2.25rem 1.75rem;
-      min-height: 520px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border: 0.5px solid transparent;
-      transition: border-color 0.2s, background 0.2s, transform 0.2s;
-    }
-    .service-card:hover {
-      border-color: var(--rule);
-      background: #dedad3;
-      transform: translateY(-2px);
-    }
-    .service-num {
-      font-family: 'IM Fell English', Georgia, serif;
-      font-size: 34px;
-      color: var(--green);
-      opacity: 0.32;
-      margin-bottom: 1rem;
-      display: block;
-    }
-    .service-title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 30px;
-      font-weight: 500;
-      line-height: 1.1;
-      color: var(--ink);
-      margin-bottom: 0.85rem;
-    }
-    .service-fit {
-      font-size: 13px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--green);
-      font-weight: 400;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-    .service-desc {
-      font-size: 15.5px;
-      line-height: 1.8;
-      color: var(--ink-light);
-      font-weight: 300;
-      margin-bottom: 1.5rem;
-    }
-    .service-list {
-      list-style: none;
-      border-top: 0.5px solid var(--rule);
-      margin-top: 1.5rem;
-      padding-top: 1rem;
-    }
-    .service-list li {
-      font-size: 15px;
-      line-height: 1.7;
-      color: var(--ink-light);
-      padding: 0.55rem 0;
-      border-bottom: 0.5px solid rgba(45, 106, 45, 0.12);
-    }
-    .service-list li::before { content: "— "; color: var(--green); }
-    .add-ons {
-      padding: 5rem 0;
-      border-bottom: 0.5px solid var(--rule);
-      display: grid;
-      grid-template-columns: 1fr 1.85fr;
-      gap: 5rem;
-      align-items: start;
-    }
-    .add-ons-title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 48px;
+      font-size: 42px;
       font-weight: 300;
       line-height: 1.12;
       color: var(--ink);
       position: sticky;
-      top: 2rem;
+      top: 5rem;
     }
-    .add-ons-title em { font-style: italic; color: var(--green); }
-    .add-ons-list { list-style: none; }
-    .add-ons-list li {
-      padding: 1.4rem 0;
-      border-bottom: 0.5px solid var(--rule);
-      display: flex;
-      gap: 1.75rem;
-      align-items: flex-start;
+    .intro-heading em { font-style: italic; color: var(--green); }
+    .intro-text {
+      font-size: 16px;
+      line-height: 1.95;
+      color: var(--ink-mid);
+      font-weight: 300;
     }
-    .add-ons-list li:first-child { border-top: 0.5px solid var(--rule); }
-    .add-on-word {
+    .intro-text p { margin-bottom: 1rem; }
+    .intro-text p:last-child { margin-bottom: 0; }
+
+    /* PRICING CARDS */
+    .pricing {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2rem 5rem;
+    }
+    .pricing-header {
+      margin-bottom: 3rem;
+    }
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 15px;
-      font-weight: 500;
+      font-size: 42px;
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+    .section-title em { font-style: italic; color: var(--green); }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .pricing-card {
+      border: 1px solid var(--rule);
+      background: var(--cream-dark);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      overflow: hidden;
+    }
+    .pricing-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(45,106,45,0.1);
+      border-color: var(--green);
+    }
+    .pricing-card.featured {
+      border-color: var(--green);
+      background: var(--deep-green);
+    }
+    .card-top {
+      padding: 2rem 2rem 1.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .pricing-card.featured .card-top { border-color: rgba(255,255,255,0.1); }
+    .stage-label {
+      font-size: 10px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--green);
-      min-width: 125px;
-      margin-top: 3px;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
     }
-    .add-on-desc {
-      font-size: 16px;
-      line-height: 1.85;
+    .pricing-card.featured .stage-label { color: rgba(240,237,232,0.6); }
+    .card-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 0.35rem;
+    }
+    .pricing-card.featured .card-title { color: var(--cream); }
+    .card-fit {
+      font-size: 12px;
+      letter-spacing: 0.06em;
       color: var(--ink-light);
       font-weight: 300;
     }
-    .cta-band {
-      background: var(--green);
-      padding: 5.5rem 2.5rem;
-      text-align: center;
+    .pricing-card.featured .card-fit { color: rgba(240,237,232,0.5); }
+    .card-price {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
     }
-    .cta-band-eyebrow {
+    .pricing-card.featured .card-price { border-color: rgba(255,255,255,0.1); }
+    .price-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 44px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .pricing-card.featured .price-amount { color: var(--cream); }
+    .price-period {
       font-size: 13px;
-      letter-spacing: 0.32em;
+      color: var(--ink-light);
+      font-weight: 300;
+    }
+    .pricing-card.featured .price-period { color: rgba(240,237,232,0.55); }
+    .price-setup {
+      font-size: 12px;
+      color: var(--green);
+      padding: 0.5rem 2rem 0;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+    .pricing-card.featured .price-setup { color: rgba(240,237,232,0.6); }
+    .card-body {
+      padding: 1.5rem 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-desc {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--ink-mid);
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+    }
+    .pricing-card.featured .card-desc { color: rgba(240,237,232,0.7); }
+    .card-list {
+      list-style: none;
+      border-top: 1px solid var(--rule);
+      padding-top: 1.25rem;
+      flex: 1;
+    }
+    .pricing-card.featured .card-list { border-color: rgba(255,255,255,0.1); }
+    .card-list li {
+      font-size: 13.5px;
+      color: var(--ink-mid);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(45,106,45,0.08);
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      font-weight: 300;
+    }
+    .pricing-card.featured .card-list li { color: rgba(240,237,232,0.75); border-color: rgba(255,255,255,0.07); }
+    .card-list li:last-child { border-bottom: none; }
+    .card-list li::before { content: "—"; color: var(--green); flex-shrink: 0; font-size: 12px; margin-top: 2px; }
+    .pricing-card.featured .card-list li::before { color: rgba(240,237,232,0.4); }
+    .card-footer {
+      padding: 1.5rem 2rem 2rem;
+    }
+    .btn-green {
+      display: block;
+      background: var(--green);
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(240,237,232,0.55);
-      margin-bottom: 1.4rem;
+      padding: 0.9rem 1rem;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+    .btn-green:hover { background: var(--green-dark); }
+    .btn-outline {
+      display: block;
+      background: transparent;
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.9rem 1rem;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.2s;
+      border: 1px solid rgba(240,237,232,0.4);
+      width: 100%;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+    /* ADD ONS */
+    .addons {
+      background: var(--cream-dark);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 5rem 2rem;
+    }
+    .addons-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .addons-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 42px;
+      font-weight: 300;
+      line-height: 1.12;
+      color: var(--ink);
+      position: sticky;
+      top: 5rem;
+    }
+    .addons-heading em { font-style: italic; color: var(--green); }
+    .addons-note {
+      font-size: 14px;
+      color: var(--ink-light);
+      margin-top: 1rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    .addons-list { list-style: none; }
+    .addons-list li {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .addons-list li:first-child { border-top: 1px solid var(--rule); }
+    .addon-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-top: 3px;
+    }
+    .addon-right {}
+    .addon-desc {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--ink-mid);
+      font-weight: 300;
+      margin-bottom: 0.3rem;
+    }
+    .addon-price {
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: var(--ink-light);
       font-weight: 400;
     }
-    .cta-band-title {
+
+    /* CTA BAND */
+    .cta-band {
+      background: var(--green);
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+    .cta-inner { max-width: 680px; margin: 0 auto; }
+    .cta-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(240,237,232,0.55);
+      font-weight: 400;
+      margin-bottom: 1.25rem;
+    }
+    .cta-title {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 52px;
+      font-size: clamp(36px, 5vw, 54px);
       font-weight: 300;
       color: var(--cream);
       line-height: 1.12;
-      margin-bottom: 0.6rem;
+      margin-bottom: 1rem;
     }
-    .cta-band-title em { font-style: italic; opacity: 0.72; }
-    .cta-band-sub {
+    .cta-title em { font-style: italic; opacity: 0.75; }
+    .cta-sub {
       font-size: 16px;
       color: rgba(240,237,232,0.7);
-      margin: 0 auto 2.75rem;
+      line-height: 1.85;
       font-weight: 300;
-      max-width: 620px;
-      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .btn-cream {
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-cta-primary {
       background: var(--cream);
-      color: var(--green);
+      color: var(--deep-green);
       font-family: 'Jost', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+    .btn-cta-primary:hover { background: var(--cream-dark); }
+    .btn-cta-secondary {
+      background: transparent;
+      color: rgba(240,237,232,0.85);
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
       font-weight: 400;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      padding: 1rem 2.75rem;
-      border: none;
-      cursor: pointer;
+      padding: 1rem 2rem;
       text-decoration: none;
-      display: inline-block;
+      border: 1px solid rgba(240,237,232,0.35);
       transition: background 0.2s;
+      display: inline-block;
     }
-    .btn-cream:hover { background: var(--cream-dark); }
+    .btn-cta-secondary:hover { background: rgba(255,255,255,0.08); }
+
+    /* FOOTER */
     footer {
-      border-top: 0.5px solid var(--rule);
-      padding: 2.75rem 0;
+      background: var(--deep-green);
+      padding: 2.5rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -284,225 +564,389 @@
       font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--green);
+      color: var(--cream);
       text-decoration: none;
     }
     .footer-email {
-      font-size: 15px;
-      color: var(--green);
+      font-size: 14px;
+      color: rgba(240,237,232,0.6);
       text-decoration: none;
-      opacity: 0.75;
-      transition: opacity 0.2s;
+      transition: color 0.2s;
     }
-    .footer-email:hover { opacity: 1; }
-    .footer-copy { font-size: 13px; color: var(--ink-light); opacity: 0.4; }
+    .footer-email:hover { color: var(--cream); }
+    .footer-copy { font-size: 13px; color: rgba(240,237,232,0.3); }
+
+    /* ANIMATIONS */
     .fade-up {
       opacity: 0;
       transform: translateY(22px);
       transition: opacity 0.65s ease, transform 0.65s ease;
     }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
-    @media (max-width: 720px) {
-      body { font-size: 17px; line-height: 1.7; }
-      .page { padding: 0 1.25rem; }
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-        padding: 1.25rem 0;
-      }
-      .nav-wordmark { font-size: 20px; letter-spacing: 0.18em; }
-      .nav-links {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem 1rem;
-      }
-      .nav-links a { font-size: 12px; letter-spacing: 0.14em; }
-      .hero {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
-        padding: 3.25rem 0;
-      }
-      .hero-eyebrow, .section-label, .cta-band-eyebrow {
-        font-size: 11px;
-        letter-spacing: 0.22em;
-      }
-      .hero-title {
-        font-size: clamp(40px, 13vw, 48px);
-        line-height: 1.05;
-      }
-      .hero-copy, .intro-text, .add-on-desc {
-        font-size: 15.5px;
-        line-height: 1.8;
-      }
-      .intro-note, .add-ons {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 3.5rem 0;
-      }
-      .intro-heading, .add-ons-title {
-        position: static;
-        font-size: 38px;
-      }
-      .services { padding: 3.5rem 0; }
-      .services-grid {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-        margin-top: 2rem;
-      }
-      .service-card {
-        min-height: auto;
-        padding: 1.85rem 1.5rem;
-      }
-      .service-title { font-size: 28px; }
-      .add-ons-list li {
-        flex-direction: column;
-        gap: 0.45rem;
-        padding: 1.25rem 0;
-      }
-      .add-on-word { min-width: auto; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 0.9rem 1.25rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 11px; letter-spacing: 0.12em; }
+
+      .hero { padding: 3.5rem 1.25rem 3rem; }
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-title { font-size: clamp(38px, 11vw, 52px); }
+
+      .ornament-rule { padding: 2rem 1.25rem; }
+
+      .intro { grid-template-columns: 1fr; gap: 1.5rem; padding: 0 1.25rem 3rem; }
+      .intro-heading { font-size: 36px; position: static; }
+
+      .pricing { padding: 3rem 1.25rem 4rem; }
+      .pricing-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .section-title { font-size: 36px; }
+
+      .addons { padding: 3.5rem 1.25rem; }
+      .addons-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .addons-heading { font-size: 36px; position: static; }
+      .addons-list li { grid-template-columns: 1fr; gap: 0.4rem; }
+
       .cta-band { padding: 4rem 1.25rem; }
-      .cta-band-title { font-size: 38px; }
-      .cta-band-sub {
-        font-size: 15.5px;
-        line-height: 1.7;
-        margin-bottom: 2rem;
-      }
-      .btn-cream {
-        width: 100%;
-        text-align: center;
-        padding: 1.05rem 1rem;
-        font-size: 12px;
-        letter-spacing: 0.14em;
-      }
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
-        gap: 0.65rem;
-        padding: 2rem 0;
-      }
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .btn-cta-primary, .btn-cta-secondary { width: 100%; text-align: center; }
+
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
     }
-    @media (max-width: 420px) {
-      .page { padding: 0 1rem; }
-      .hero-title { font-size: 39px; }
-      .nav-links { gap: 0.65rem 0.85rem; }
-      .nav-links a, .btn-cream { letter-spacing: 0.12em; }
-      .cta-band-title, .intro-heading, .add-ons-title { font-size: 34px; }
+
+    /* APPLICATION FORM */
+    .apply-section {
+      padding: 5.5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
     }
+    .apply-inner { max-width: 820px; }
+    .apply-header { margin-bottom: 3rem; }
+    .apply-sub {
+      font-size: 16px;
+      color: var(--ink-mid);
+      line-height: 1.85;
+      font-weight: 300;
+      margin-top: 1rem;
+      max-width: 560px;
+    }
+    .apply-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-full { grid-column: 1 / -1; }
+    .form-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 400;
+    }
+    .form-input {
+      font-family: 'Jost', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--cream-dark);
+      background: var(--cream-dark);
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      width: 100%;
+      appearance: none;
+    }
+    .form-input:focus { border-color: var(--green); background: #fff; }
+    .form-input::placeholder { color: var(--ink-light); }
+    .form-select { cursor: pointer; }
+    .form-textarea { min-height: 130px; resize: vertical; }
+    .btn-apply {
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 1rem 2.5rem;
+      background: var(--green);
+      color: var(--cream);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      align-self: flex-start;
+    }
+    .btn-apply:hover { background: var(--green-dark); }
+    .apply-success {
+      display: none;
+      background: var(--cream-dark);
+      border-left: 3px solid var(--green);
+      padding: 1.25rem 1.5rem;
+      font-size: 15px;
+      color: var(--ink-mid);
+      font-weight: 300;
+      margin-top: 1rem;
+    }
+    @media (max-width: 768px) {
+      .apply-section { padding: 4rem 1.25rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .btn-apply { width: 100%; text-align: center; }
+    }
+
   </style>
 </head>
 <body>
-  <div class="page">
-    <nav>
-      <a href="index.html" class="nav-wordmark">Cafe Ledger</a>
-      <ul class="nav-links">
-        <li><a href="index.html#tools">Tools</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="services.html" class="active">Services</a></li>
-        <li><a href="index.html#about">About</a></li>
-      </ul>
-    </nav>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Cafe Ledger</a>
+    <ul class="nav-links">
+      <li><a href="index.html#tools">Tools</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="index.html#about">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="fade-up">
+        <p class="hero-eyebrow">Financial Support for Cafes</p>
+        <h1 class="hero-title">Support at<br>every <em>stage.</em></h1>
+        <p class="hero-copy">Simple bookkeeping, reporting, and financial guidance for coffee shops and bakeries that want clearer numbers, better decisions, and more control over cash.</p>
+        <span class="hero-note">Now accepting new clients — limited spots available</span>
+      </div>
+      <div class="hero-right fade-up" style="transition-delay:0.15s">
+        <p class="hero-right-title">What you get at every stage</p>
+        <ul class="hero-right-list">
+          <li>Clean, organized books you can actually read</li>
+          <li>Clear reports on profit, labor, and cash flow</li>
+          <li>Practical support from a senior accountant</li>
+          <li>Fortune 500 financial experience in your corner</li>
+          <li>Simple systems that fit your real workflow</li>
+        </ul>
+        <a href="#apply" class="btn-cream">Apply to Work Together</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORNAMENT -->
+  <div class="ornament-rule">
+    <span class="ornament-text">How We Work Together</span>
   </div>
 
-  <main>
-    <div class="page">
-      <section class="hero fade-up">
-        <div>
-          <p class="hero-eyebrow">Accounting · Clarity · Profit</p>
-          <h1 class="hero-title">Financial support for<br><em>growing</em> shops.</h1>
+  <!-- INTRO -->
+  <section class="intro fade-up">
+    <h2 class="intro-heading">Start simple.<br><em>Build clarity.</em></h2>
+    <div class="intro-text">
+      <p>Cafe Ledger is built for shop owners who do not need more accounting jargon. You need clean records, clear reports, and practical support that helps you understand what is happening inside your business.</p>
+      <p>Every stage includes a one-time setup fee of $150 to get your tracker, chart of accounts, and reporting system built correctly from day one. Cleanup or catch-up bookkeeping from prior months is quoted separately.</p>
+      <p>Once you know which stage fits, applying to work together is the easiest next step. Tell us a little about your shop and what feels messy — we will take it from there.</p>
+    </div>
+  </section>
+
+  <!-- ORNAMENT -->
+  <div class="ornament-rule" style="padding-top:0">
+    <span class="ornament-text">Pricing</span>
+  </div>
+
+  <!-- PRICING CARDS -->
+  <section class="pricing">
+    <div class="pricing-header fade-up">
+      <p class="section-eyebrow">Three stages. Clear pricing.</p>
+      <h2 class="section-title">Find the right<br><em>level of support.</em></h2>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- STAGE I -->
+      <article class="pricing-card fade-up">
+        <div class="card-top">
+          <p class="stage-label">Stage I</p>
+          <h3 class="card-title">Start with Clarity</h3>
+          <p class="card-fit">For shops getting a handle on their numbers</p>
         </div>
-        <p class="hero-copy">Simple bookkeeping, reporting, and financial guidance for coffee shops and bakeries that want clearer numbers, better decisions, and more control over cash.</p>
-      </section>
-    </div>
-
-    <div class="page">
-      <section class="intro-note fade-up">
-        <h2 class="intro-heading">Start simple.<br><em>Build clarity.</em></h2>
-        <p class="intro-text">Cafe Ledger is built for shop owners who do not need more accounting jargon. You need clean records, clear reports, and practical support that helps you understand what is happening inside your business.</p>
-      </section>
-    </div>
-
-    <div class="page">
-      <section class="services">
-        <p class="section-label">Services</p>
-        <div class="services-grid">
-          <article class="service-card fade-up">
-            <div>
-              <span class="service-num">I</span>
-              <h2 class="service-title">Start with Clarity</h2>
-              <p class="service-fit">For shops getting a handle on their numbers</p>
-              <p class="service-desc">A simple starting point for owners who want organized books and a clear view of weekly sales, labor, costs, and cash.</p>
-              <ul class="service-list">
-                <li>Monthly bookkeeping and clean records</li>
-                <li>Simple profit and cash flow reporting</li>
-                <li>Weekly tracker setup</li>
-                <li>Clear breakdown of where money is going</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="service-card fade-up" style="transition-delay:0.1s">
-            <div>
-              <span class="service-num">II</span>
-              <h2 class="service-title">Build Control</h2>
-              <p class="service-fit">For shops ready to improve margins</p>
-              <p class="service-desc">For owners who want better visibility into pricing, labor, ingredients, and the small leaks that quietly drain profit.</p>
-              <ul class="service-list">
-                <li>Monthly financial reports with insights</li>
-                <li>Labor and ingredient cost review</li>
-                <li>Profit leak review</li>
-                <li>Ongoing support for financial questions</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="service-card fade-up" style="transition-delay:0.2s">
-            <div>
-              <span class="service-num">III</span>
-              <h2 class="service-title">Ongoing Support</h2>
-              <p class="service-fit">For growing cafes and bakeries</p>
-              <p class="service-desc">A more structured level of support for shops that want consistent financial oversight as the business grows.</p>
-              <ul class="service-list">
-                <li>Full bookkeeping and reporting</li>
-                <li>Regular financial check-ins</li>
-                <li>Support with pricing, costs, and planning</li>
-                <li>Clean systems to support growth</li>
-              </ul>
-            </div>
-          </article>
+        <div class="card-price">
+          <span class="price-amount">$600</span>
+          <span class="price-period">/month</span>
         </div>
-      </section>
+        <p class="price-setup">+ $150 one-time setup fee</p>
+        <div class="card-body">
+          <p class="card-desc">Organized books and a clear weekly view of sales, labor, costs, and cash. A clean starting point.</p>
+          <ul class="card-list">
+            <li>Monthly bookkeeping and clean records</li>
+            <li>Simple profit and cash flow reporting</li>
+            <li>Weekly tracker setup</li>
+            <li>Clear breakdown of where money goes</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="#apply" class="btn-green">Apply to Work Together</a>
+        </div>
+      </article>
+
+      <!-- STAGE II -->
+      <article class="pricing-card featured fade-up" style="transition-delay:0.1s">
+        <div class="card-top">
+          <p class="stage-label">Stage II — Most Popular</p>
+          <h3 class="card-title">Build Control</h3>
+          <p class="card-fit">For shops ready to improve margins</p>
+        </div>
+        <div class="card-price">
+          <span class="price-amount">$850</span>
+          <span class="price-period">/month</span>
+        </div>
+        <p class="price-setup">+ $150 one-time setup fee</p>
+        <div class="card-body">
+          <p class="card-desc">Better visibility into pricing, labor, ingredients, and the small leaks draining your profit.</p>
+          <ul class="card-list">
+            <li>Monthly financial reports with insights</li>
+            <li>Labor and ingredient cost review</li>
+            <li>Profit leak analysis</li>
+            <li>Ongoing support for financial questions</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="#apply" class="btn-outline">Apply to Work Together</a>
+        </div>
+      </article>
+
+      <!-- STAGE III -->
+      <article class="pricing-card fade-up" style="transition-delay:0.2s">
+        <div class="card-top">
+          <p class="stage-label">Stage III</p>
+          <h3 class="card-title">Ongoing Support</h3>
+          <p class="card-fit">For growing cafes and bakeries</p>
+        </div>
+        <div class="card-price">
+          <span class="price-amount">$1,250</span>
+          <span class="price-period">/month</span>
+        </div>
+        <p class="price-setup">+ $150 one-time setup fee</p>
+        <div class="card-body">
+          <p class="card-desc">Consistent financial oversight and structured support as your business grows.</p>
+          <ul class="card-list">
+            <li>Full bookkeeping and reporting</li>
+            <li>Regular financial check-ins</li>
+            <li>Pricing, costs and planning support</li>
+            <li>Clean systems to support growth</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="#apply" class="btn-green">Apply to Work Together</a>
+        </div>
+      </article>
+
     </div>
+  </section>
 
-    <div class="page">
-      <section class="add-ons fade-up">
-        <h2 class="add-ons-title">Additional<br><em>support.</em></h2>
-        <ul class="add-ons-list">
-          <li><span class="add-on-word">Clean-up</span><p class="add-on-desc">Catch-up bookkeeping and cleanup of past records so your numbers are easier to trust and use.</p></li>
-          <li><span class="add-on-word">Tax-ready</span><p class="add-on-desc">Organized financial records and reports that help make tax time less stressful.</p></li>
-          <li><span class="add-on-word">Systems</span><p class="add-on-desc">Simple setup support for tools like QuickBooks, trackers, and reporting workflows.</p></li>
-          <li><span class="add-on-word">Planning</span><p class="add-on-desc">Practical support around pricing, costs, cash flow, and the decisions that affect profit.</p></li>
-        </ul>
-      </section>
+  <!-- ADD ONS -->
+  <section class="addons">
+    <div class="addons-inner">
+      <div class="fade-up">
+        <h2 class="addons-heading">Additional<br><em>support.</em></h2>
+        <p class="addons-note">Add-ons are quoted separately and can be combined with any monthly stage.</p>
+      </div>
+      <ul class="addons-list fade-up" style="transition-delay:0.1s">
+        <li>
+          <span class="addon-label">Clean-up</span>
+          <div class="addon-right">
+            <p class="addon-desc">Catch-up bookkeeping and cleanup of past records so your numbers are easier to trust and use.</p>
+            
+          </div>
+        </li>
+        <li>
+          <span class="addon-label">Tax-ready</span>
+          <div class="addon-right">
+            <p class="addon-desc">Organized financial records and reports that help make tax time less stressful and faster for your CPA.</p>
+            
+          </div>
+        </li>
+        <li>
+          <span class="addon-label">Systems</span>
+          <div class="addon-right">
+            <p class="addon-desc">Simple setup support for QuickBooks, trackers, and reporting workflows tailored to your shop.</p>
+            
+          </div>
+        </li>
+        <li>
+          <span class="addon-label">Planning</span>
+          <div class="addon-right">
+            <p class="addon-desc">Practical support around pricing, costs, cash flow, and the decisions that directly affect your profit.</p>
+            
+          </div>
+        </li>
+      </ul>
     </div>
+  </section>
 
-    <section class="cta-band">
-      <p class="cta-band-eyebrow">Work With Cafe Ledger</p>
-      <h2 class="cta-band-title">Ready for clearer numbers<br><em>and better decisions?</em></h2>
-      <p class="cta-band-sub">Start with a simple conversation about where your shop is now, what feels messy, and what kind of support would actually help.</p>
-      <a href="mailto:hello@cafeledger.com" class="btn-cream">Start a Conversation</a>
-    </section>
-  </main>
 
-  <div class="page">
-    <footer>
+  <!-- APPLICATION FORM -->
+  <section class="apply-section" id="apply">
+    <div class="apply-inner fade-up">
+      <div class="apply-header">
+        <p class="section-eyebrow">Work with Cafe Ledger</p>
+        <h2 class="section-title">Apply to work<br><em>together.</em></h2>
+        <p class="apply-sub">Tell us about your cafe and what you need help with. We review every application and will be in touch within 2 business days.</p>
+      </div>
+      <form class="apply-form" id="apply-form" onsubmit="handleApply(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input type="text" class="form-input" name="name" placeholder="First and last name" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Cafe or Bakery Name</label>
+            <input type="text" class="form-input" name="cafe_name" placeholder="Your shop name" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" name="email" placeholder="hello@yourcafe.com" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Stage You Are Interested In</label>
+            <select class="form-input form-select" name="stage">
+              <option value="" disabled selected>Select a stage</option>
+              <option>Stage I — Start with Clarity ($600/mo)</option>
+              <option>Stage II — Build Control ($850/mo)</option>
+              <option>Stage III — Ongoing Support ($1,250/mo)</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group form-full">
+          <label class="form-label">What feels messy or unclear in your finances right now?</label>
+          <textarea class="form-input form-textarea" name="message" placeholder="Tell us what is going on — no need to have it figured out." required></textarea>
+        </div>
+        <button type="submit" class="btn-apply">Submit Application</button>
+      </form>
+      <div class="apply-success" id="apply-success">
+        Your application has been received. We will be in touch within 2 business days.
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <div class="cta-inner fade-up">
+      <p class="cta-eyebrow">Work with Cafe Ledger</p>
+      <h2 class="cta-title">Ready for clearer numbers<br><em>and better decisions?</em></h2>
+      <p class="cta-sub">Tell us a little about your cafe, what feels uncertain, and what you are hoping to get a handle on. We will review your application and reach out about next steps.</p>
+      <div class="cta-buttons">
+        <a href="#apply" class="btn-cta-primary">Apply to Work Together</a>
+        <a href="mailto:hello@cafeledger.com" class="btn-cta-secondary">Send an Email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
       <a href="index.html" class="footer-mark">Cafe Ledger</a>
       <a href="mailto:hello@cafeledger.com" class="footer-email">hello@cafeledger.com</a>
       <span class="footer-copy">&copy; 2026 Cafe Ledger. All rights reserved.</span>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   <script>
     const observer = new IntersectionObserver((entries) => {
@@ -512,11 +956,35 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
-
+    }, { threshold: 0.08 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    async function handleApply(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('.btn-apply');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        const response = await fetch('https://formspree.io/f/maqveokw', {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          form.style.display = 'none';
+          document.getElementById('apply-success').style.display = 'block';
+        } else {
+          btn.textContent = 'Something went wrong. Try again.';
+          btn.disabled = false;
+        }
+      } catch (err) {
+        btn.textContent = 'Something went wrong. Try again.';
+        btn.disabled = false;
+      }
+    }
+
   </script>
-<script async data-uid="a55e713a33" src="https://cafe-ledger.kit.com/a55e713a33/index.js"></script>
 
 </body>
 </html>
