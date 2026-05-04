@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Cafe Ledger Blog | Money Notes for Cafe Owners</title>
   <meta name="description" content="Practical money notes for coffee shop and bakery owners on profit, cash flow, labor, pricing, and cost control." />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -15,13 +13,16 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --green:      #2d6a2d;
-      --green-dark: #1e4a1e;
-      --cream:      #f0ede8;
-      --cream-dark: #e4e0d8;
-      --ink:        #1a1a18;
-      --ink-light:  #3a3a36;
-      --rule:       rgba(45, 106, 45, 0.22);
+      --green:       #2d6a2d;
+      --green-dark:  #1e4a1e;
+      --deep-green:  #1c3d1c;
+      --cream:       #f0ede8;
+      --cream-dark:  #e4e0d8;
+      --cream-mid:   #ece8e2;
+      --ink:         #1a1a18;
+      --ink-mid:     #3a3a36;
+      --ink-light:   #5a5a52;
+      --rule:        rgba(45,106,45,0.2);
     }
 
     html { scroll-behavior: smooth; }
@@ -31,115 +32,95 @@
       background: var(--cream);
       color: var(--ink);
       font-weight: 300;
-      font-size: 18px;
+      font-size: 17px;
       line-height: 1.75;
       overflow-x: hidden;
     }
 
-    .page {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 2.5rem;
-    }
-
+    /* NAV */
     nav {
-      border-bottom: 0.5px solid var(--rule);
-      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-
-    .nav-wordmark {
+    .nav-logo {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 22px;
       font-weight: 500;
-      letter-spacing: 0.2em;
-      color: var(--green);
+      letter-spacing: 0.22em;
       text-transform: uppercase;
+      color: var(--green);
       text-decoration: none;
     }
-
     .nav-links {
       display: flex;
       gap: 2.25rem;
       list-style: none;
+      align-items: center;
+      flex-wrap: wrap;
     }
-
     .nav-links a {
-      font-size: 14px;
+      font-size: 13px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--ink-light);
+      color: var(--ink-mid);
       text-decoration: none;
       font-weight: 400;
       transition: color 0.2s;
     }
-
     .nav-links a:hover { color: var(--green); }
+    .nav-links .active { color: var(--green); border-bottom: 1px solid var(--green); padding-bottom: 1px; }
 
-    .blog-hero {
-      display: grid;
-      grid-template-columns: 1.35fr 0.8fr;
-      gap: 4rem;
-      align-items: center;
-      padding: 5.5rem 0 4.75rem;
-      border-bottom: 0.5px solid var(--rule);
+    /* HERO */
+    .hero {
+      background: var(--deep-green);
+      padding: 5rem 2rem 4.5rem;
+      text-align: center;
     }
-
-    .eyebrow {
-      font-size: 13px;
-      letter-spacing: 0.28em;
+    .hero-inner { max-width: 750px; margin: 0 auto; }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 1.4rem;
+      color: rgba(240,237,232,0.55);
       font-weight: 400;
+      margin-bottom: 1.25rem;
     }
-
-    .blog-title {
+    .hero-title {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 64px;
+      font-size: clamp(44px, 7vw, 72px);
       font-weight: 300;
-      line-height: 1.05;
-      color: var(--ink);
-      margin-bottom: 1.4rem;
+      line-height: 1.08;
+      color: var(--cream);
+      margin-bottom: 1.25rem;
     }
-
-    .blog-title em {
-      font-style: italic;
-      color: var(--green);
-    }
-
-    .blog-sub {
+    .hero-title em { font-style: italic; color: rgba(240,237,232,0.65); }
+    .hero-sub {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 23px;
+      font-size: 20px;
       font-weight: 400;
-      color: var(--ink-light);
-      line-height: 1.5;
       font-style: italic;
-      max-width: 620px;
+      color: rgba(240,237,232,0.65);
+      line-height: 1.6;
+      max-width: 580px;
+      margin: 0 auto;
     }
 
-    .blog-mark {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .blog-mark img {
-      width: 100%;
-      max-width: 230px;
-      height: auto;
-      display: block;
-    }
-
+    /* ORNAMENT */
     .ornament-rule {
       display: flex;
       align-items: center;
-      gap: 1.75rem;
-      padding: 3.25rem 0;
+      gap: 1.5rem;
+      padding: 3rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
     }
-
     .ornament-rule::before,
     .ornament-rule::after {
       content: '';
@@ -147,488 +128,473 @@
       height: 0.5px;
       background: var(--rule);
     }
-
     .ornament-text {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 14px;
-      letter-spacing: 0.32em;
+      font-size: 13px;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--green);
       white-space: nowrap;
     }
 
+    /* FEATURED POST */
+    .featured-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
     .featured {
       display: grid;
-      grid-template-columns: 1fr 1.35fr;
+      grid-template-columns: 1fr 1fr;
       gap: 0;
+      border: 1px solid var(--rule);
+      overflow: hidden;
       background: var(--cream-dark);
-      margin-bottom: 4rem;
-      border: 0.5px solid var(--rule);
     }
-
-    .featured-label {
-      padding: 2.5rem;
-      border-right: 0.5px solid var(--rule);
+    .featured-img {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+      display: block;
+    }
+    .featured-content {
+      padding: 3rem;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      min-height: 320px;
+      justify-content: center;
     }
-
-    .featured-num {
-      font-family: 'IM Fell English', Georgia, serif;
-      font-size: 58px;
-      color: var(--green);
-      opacity: 0.25;
-      line-height: 1;
-    }
-
-    .featured-content {
-      padding: 2.5rem;
-    }
-
-    .category {
-      font-size: 12px;
-      letter-spacing: 0.24em;
+    .featured-tag {
+      font-size: 11px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--green);
-      margin-bottom: 1.25rem;
-      font-weight: 400;
+      font-weight: 500;
+      margin-bottom: 1rem;
     }
-
     .featured-title {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 42px;
-      font-weight: 300;
+      font-size: 38px;
+      font-weight: 500;
       line-height: 1.1;
       color: var(--ink);
       margin-bottom: 1rem;
     }
-
     .featured-excerpt {
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.85;
-      color: var(--ink-light);
-      margin-bottom: 2rem;
+      color: var(--ink-mid);
       font-weight: 300;
+      margin-bottom: 2rem;
     }
-
-    .read-link,
-    .btn-primary {
-      font-size: 13px;
-      letter-spacing: 0.18em;
+    .read-link {
+      font-size: 12px;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--green);
       text-decoration: none;
       font-weight: 400;
       border-bottom: 0.5px solid var(--green);
       padding-bottom: 2px;
+      align-self: flex-start;
+      transition: opacity 0.2s;
     }
+    .read-link:hover { opacity: 0.65; }
 
-    .posts {
-      padding: 0 0 5rem;
-      border-bottom: 0.5px solid var(--rule);
+    /* POSTS GRID */
+    .posts-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
     }
-
     .posts-header {
       display: flex;
       justify-content: space-between;
-      align-items: end;
-      gap: 2rem;
+      align-items: flex-end;
       margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--rule);
     }
-
     .section-title {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 44px;
+      font-size: 42px;
       font-weight: 300;
-      line-height: 1.12;
+      line-height: 1.1;
       color: var(--ink);
     }
-
-    .section-title em {
-      color: var(--green);
-      font-style: italic;
-    }
-
+    .section-title em { font-style: italic; color: var(--green); }
     .posts-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+      gap: 1.5rem;
     }
-
     .post-card {
       background: var(--cream-dark);
-      min-height: 345px;
-      padding: 2.25rem 1.75rem;
+      border: 1px solid var(--rule);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      color: inherit;
       text-decoration: none;
-      transition: background 0.2s, transform 0.2s;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      overflow: hidden;
     }
-
     .post-card:hover {
-      background: #dedad3;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(45,106,45,0.1);
+      border-color: var(--green);
     }
-
-    .post-title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 28px;
-      font-weight: 500;
-      line-height: 1.15;
-      color: var(--ink);
-      margin-bottom: 1rem;
+    .post-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      background: var(--cream-mid);
     }
-
-    .post-excerpt {
-      font-size: 15px;
-      line-height: 1.8;
-      color: var(--ink-light);
-      font-weight: 300;
+    .post-body {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
-
-    .post-meta {
-      font-size: 12px;
+    .post-category {
+      font-size: 11px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--green);
-      margin-top: 2rem;
-      font-weight: 400;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
     }
-
-    .newsletter {
-      padding: 5rem 0;
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 4rem;
-      align-items: center;
-      border-bottom: 0.5px solid var(--rule);
-    }
-
-    .newsletter-title {
+    .post-title {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 44px;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+    .post-excerpt {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--ink-mid);
       font-weight: 300;
-      line-height: 1.12;
+      flex: 1;
     }
-
-    .newsletter-title em {
-      color: var(--green);
-      font-style: italic;
-    }
-
-    .newsletter-copy {
-      color: var(--ink-light);
-      font-size: 16px;
-      line-height: 1.85;
-      margin-bottom: 1.75rem;
-    }
-
-    .btn-solid {
-      background: var(--green);
-      color: var(--cream);
-      font-family: 'Jost', sans-serif;
-      font-size: 13px;
-      font-weight: 400;
+    .post-meta {
+      font-size: 11px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      padding: 1rem 2rem;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.2s;
+      color: var(--green);
+      font-weight: 400;
+      margin-top: 1.5rem;
+      border-top: 0.5px solid var(--rule);
+      padding-top: 1rem;
     }
 
-    .btn-solid:hover { background: var(--green-dark); }
+    /* NEWSLETTER BAND */
+    .newsletter-band {
+      background: var(--green);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .newsletter-inner { max-width: 620px; margin: 0 auto; }
+    .newsletter-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(240,237,232,0.6);
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    .newsletter-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(32px, 5vw, 46px);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+    .newsletter-title em { font-style: italic; opacity: 0.75; }
+    .newsletter-sub {
+      font-size: 15px;
+      color: rgba(240,237,232,0.7);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 2.25rem;
+    }
+    .nl-form {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 440px;
+      margin: 0 auto 0.75rem;
+    }
+    .nl-form input {
+      flex: 1;
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      padding: 0.85rem 1rem;
+      border: none;
+      background: rgba(255,255,255,0.15);
+      color: var(--cream);
+      outline: none;
+      transition: background 0.2s;
+    }
+    .nl-form input:focus { background: rgba(255,255,255,0.22); }
+    .nl-form input::placeholder { color: rgba(240,237,232,0.5); }
+    .nl-form button {
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.85rem 1.5rem;
+      background: var(--deep-green);
+      color: var(--cream);
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .nl-form button:hover { background: var(--ink); }
+    .nl-note { font-size: 12px; color: rgba(240,237,232,0.4); }
+    .nl-success {
+      display: none;
+      background: rgba(255,255,255,0.15);
+      color: var(--cream);
+      padding: 1rem 2rem;
+      font-size: 15px;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
 
+    /* FOOTER */
     footer {
-      padding: 2.75rem 0;
+      background: var(--deep-green);
+      padding: 2.5rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
     }
-
     .footer-mark {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 18px;
       font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--green);
+      color: var(--cream);
       text-decoration: none;
     }
-
     .footer-email {
-      font-size: 15px;
-      color: var(--green);
+      font-size: 14px;
+      color: rgba(240,237,232,0.6);
       text-decoration: none;
-      opacity: 0.75;
+      transition: color 0.2s;
     }
+    .footer-email:hover { color: var(--cream); }
+    .footer-copy { font-size: 13px; color: rgba(240,237,232,0.3); }
 
-    .footer-copy {
-      font-size: 13px;
-      color: var(--ink-light);
-      opacity: 0.4;
+    /* ANIMATIONS */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 720px) {
-      body {
-        font-size: 17px;
-        line-height: 1.7;
-      }
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 0.9rem 1.25rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 11px; letter-spacing: 0.12em; }
 
-      .page {
-        padding: 0 1.25rem;
-      }
+      .hero { padding: 3.5rem 1.25rem 3rem; }
 
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-        padding: 1.25rem 0;
-      }
+      .ornament-rule { padding: 2rem 1.25rem; }
 
-      .nav-wordmark {
-        font-size: 20px;
-        letter-spacing: 0.18em;
-      }
+      .featured-wrap { padding: 0 1.25rem 3rem; }
+      .featured { grid-template-columns: 1fr; }
+      .featured-img { min-height: 240px; height: 240px; }
+      .featured-content { padding: 2rem 1.5rem; }
+      .featured-title { font-size: 30px; }
 
-      .nav-links {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem 1rem;
-      }
+      .posts-wrap { padding: 0 1.25rem 4rem; }
+      .posts-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .posts-header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+      .section-title { font-size: 36px; }
 
-      .nav-links a {
-        font-size: 12px;
-        letter-spacing: 0.14em;
-      }
+      .newsletter-band { padding: 3.5rem 1.25rem; }
+      .nl-form { flex-direction: column; }
 
-      .blog-hero {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-        padding: 3.25rem 0;
-      }
-
-      .blog-mark {
-        order: -1;
-        justify-content: flex-start;
-      }
-
-      .blog-mark img {
-        max-width: 185px;
-      }
-
-      .blog-title {
-        font-size: clamp(40px, 13vw, 48px);
-      }
-
-      .blog-sub {
-        font-size: 20px;
-        line-height: 1.45;
-      }
-
-      .eyebrow {
-        font-size: 11px;
-        letter-spacing: 0.22em;
-      }
-
-      .ornament-rule {
-        padding: 2.25rem 0;
-        gap: 1rem;
-      }
-
-      .ornament-text {
-        font-size: 12px;
-        letter-spacing: 0.24em;
-      }
-
-      .featured {
-        grid-template-columns: 1fr;
-        margin-bottom: 3rem;
-      }
-
-      .featured-label {
-        border-right: none;
-        border-bottom: 0.5px solid var(--rule);
-        min-height: auto;
-        gap: 1rem;
-        padding: 1.75rem 1.5rem;
-      }
-
-      .featured-content {
-        padding: 1.85rem 1.5rem;
-      }
-
-      .featured-title,
-      .section-title,
-      .newsletter-title {
-        font-size: 36px;
-      }
-
-      .posts {
-        padding-bottom: 3.5rem;
-      }
-
-      .posts-header {
-        align-items: flex-start;
-        flex-direction: column;
-        margin-bottom: 2rem;
-      }
-
-      .posts-grid {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-      }
-
-      .post-card {
-        min-height: auto;
-        padding: 1.85rem 1.5rem;
-      }
-
-      .newsletter {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        padding: 3.5rem 0;
-      }
-
-      .btn-solid {
-        width: 100%;
-        text-align: center;
-        padding: 1.05rem 1rem;
-        font-size: 12px;
-        letter-spacing: 0.14em;
-      }
-
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 2rem 0;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .page { padding: 0 1rem; }
-      .blog-title { font-size: 39px; }
-      .featured-title,
-      .section-title,
-      .newsletter-title { font-size: 34px; }
-      .post-title { font-size: 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
     }
   </style>
 </head>
-
 <body>
-  <div class="page">
-    <nav>
-      <a href="index.html" class="nav-wordmark">Cafe Ledger</a>
-      <ul class="nav-links">
-        <li><a href="index.html#tools">Tools</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="index.html#about">About</a></li>
-      </ul>
-    </nav>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Cafe Ledger</a>
+    <ul class="nav-links">
+      <li><a href="index.html#tools">Tools</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="index.html#about">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner fade-up">
+      <p class="hero-eyebrow">Cafe Ledger Blog</p>
+      <h1 class="hero-title">Money notes for<br><em>cafe owners.</em></h1>
+      <p class="hero-sub">Practical posts on profit, pricing, labor, cash flow, and the weekly numbers that help coffee shops and bakeries stay healthy.</p>
+    </div>
+  </section>
+
+  <!-- ORNAMENT -->
+  <div class="ornament-rule">
+    <span class="ornament-text">Featured Post</span>
   </div>
 
-  <main>
-    <div class="page">
-      <section class="blog-hero">
-        <div>
-          <p class="eyebrow">Cafe Ledger Blog</p>
-          <h1 class="blog-title">Money notes for<br><em>cafe</em> owners.</h1>
-          <p class="blog-sub">Practical posts on profit, pricing, labor, cash flow, and the weekly numbers that help coffee shops and bakeries stay healthy.</p>
-        </div>
-
-        <div class="blog-mark">
-          <img src="./logo.svg" alt="Cafe Ledger Accounting Clarity Profit" />
-        </div>
-      </section>
-    </div>
-
-    <div class="page">
-      <div class="ornament-rule">
-        <span class="ornament-text">Start Reading</span>
+  <!-- FEATURED POST -->
+  <div class="featured-wrap">
+    <a href="why-most-cafes-dont-know-their-profit.html" class="featured fade-up" style="text-decoration:none; color:inherit;">
+      <img
+        src="https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcHgxMTc4NTQ1LWltYWdlLWt3dnU3aXFsLmpwZw.jpg"
+        alt="Barista working at cafe espresso bar"
+        class="featured-img"
+        onerror="this.style.background='#e4e0d8';this.removeAttribute('src')"
+      />
+      <div class="featured-content">
+        <p class="featured-tag">Featured Post &nbsp;·&nbsp; Profit</p>
+        <h2 class="featured-title">Why Most Cafes Do Not Know Their Profit</h2>
+        <p class="featured-excerpt">Sales can look strong while cash still feels tight. This post breaks down why revenue alone does not tell the full story, and what cafe owners should track every week instead.</p>
+        <span class="read-link">Read Post</span>
       </div>
+    </a>
+  </div>
 
-      <section class="featured">
-        <div class="featured-label">
-          <p class="category">Featured Post</p>
-          <p class="featured-num">I</p>
-        </div>
+  <!-- ORNAMENT -->
+  <div class="ornament-rule" style="padding-top:0;">
+    <span class="ornament-text">Latest Notes</span>
+  </div>
 
-        <div class="featured-content">
-          <p class="category">Profit</p>
-          <h2 class="featured-title">Why Most Cafes Do Not Know Their Profit</h2>
-          <p class="featured-excerpt">Sales can look strong while cash still feels tight. This post breaks down why revenue alone does not tell the full story, and what cafe owners should track every week instead.</p>
-          <a href="why-most-cafes-dont-know-their-profit.html" class="read-link">Read Post</a>
-        </div>
-      </section>
-
-      <section class="posts">
-        <div class="posts-header">
-          <h2 class="section-title">Latest<br><em>notes.</em></h2>
-          <a href="index.html#tools" class="read-link">Get Free Tracker</a>
-        </div>
-
-        <div class="posts-grid">
-          <a href="track-weekly-profit-in-10-minutes.html" class="post-card">
-            <div>
-              <p class="category">Weekly Routine</p>
-              <h3 class="post-title">How to Track Weekly Profit in 10 Minutes</h3>
-              <p class="post-excerpt">A simple weekly routine for tracking sales, labor, ingredients, and cash without turning your business into an accounting project.</p>
-            </div>
-            <span class="post-meta">Read Post</span>
-          </a>
-
-          <a href="where-cafe-owners-lose-money.html" class="post-card">
-            <div>
-              <p class="category">Cost Control</p>
-              <h3 class="post-title">Where Cafe Owners Lose Money Without Realizing It</h3>
-              <p class="post-excerpt">Small leaks add up fast. Spot the quiet profit drains hiding in waste, overordering, labor creep, and unclear pricing.</p>
-            </div>
-            <span class="post-meta">Read Post</span>
-          </a>
-
-          <a href="simple-weekly-money-routine-for-cafe-owners.html" class="post-card">
-            <div>
-              <p class="category">Cash Flow</p>
-              <h3 class="post-title">Simple Weekly Money Routine for Cafe Owners</h3>
-              <p class="post-excerpt">You do not need to review everything every day. Start with one simple weekly check-in that helps you make better decisions.</p>
-            </div>
-            <span class="post-meta">Read Post</span>
-          </a>
-        </div>
-      </section>
-
-      <section class="newsletter">
-        <div>
-          <p class="eyebrow">Free Tool</p>
-          <h2 class="newsletter-title">Start with your<br><em>weekly numbers.</em></h2>
-        </div>
-
-        <div>
-          <p class="newsletter-copy">Use the free profit tracker to see what is really happening in your cafe each week. Start simple, stay consistent, and build from there.</p>
-          <a href="mailto:hello@cafeledger.com" class="btn-solid">Download Free Profit Tracker</a>
-        </div>
-      </section>
+  <!-- POSTS GRID -->
+  <div class="posts-wrap">
+    <div class="posts-header fade-up">
+      <h2 class="section-title">All<br><em>posts.</em></h2>
+      <a href="index.html#get-guide" class="read-link">Get Free Starter Guide</a>
     </div>
-  </main>
 
-  <div class="page">
-    <footer>
+    <div class="posts-grid">
+
+      <a href="track-weekly-profit-in-10-minutes.html" class="post-card fade-up">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/800px-A_small_cup_of_coffee.JPG"
+          alt="Coffee cup on desk with weekly planner"
+          class="post-img"
+          onerror="this.style.background='#d8d3c8';this.removeAttribute('src')"
+        />
+        <div class="post-body">
+          <p class="post-category">Weekly Routine</p>
+          <h3 class="post-title">How to Track Weekly Profit in 10 Minutes</h3>
+          <p class="post-excerpt">A simple weekly routine for tracking sales, labor, ingredients, and cash without turning your business into an accounting project.</p>
+          <span class="post-meta">Read Post</span>
+        </div>
+      </a>
+
+      <a href="where-cafe-owners-lose-money.html" class="post-card fade-up" style="transition-delay:0.1s">
+        <img
+          src="https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcHgxMTc4NTMzLWltYWdlLWt3dnU3aW1lLmpwZw.jpg"
+          alt="Bakery fresh pastries display case"
+          class="post-img"
+          onerror="this.style.background='#d8d3c8';this.removeAttribute('src')"
+        />
+        <div class="post-body">
+          <p class="post-category">Cost Control</p>
+          <h3 class="post-title">Where Cafe Owners Lose Money Without Realizing It</h3>
+          <p class="post-excerpt">Small leaks add up fast. Spot the quiet profit drains hiding in waste, overordering, labor creep, and unclear pricing.</p>
+          <span class="post-meta">Read Post</span>
+        </div>
+      </a>
+
+      <a href="simple-weekly-money-routine-for-cafe-owners.html" class="post-card fade-up" style="transition-delay:0.2s">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Barista_at_work.jpg/800px-Barista_at_work.jpg"
+          alt="Cafe owner at work behind counter"
+          class="post-img"
+          onerror="this.style.background='#d8d3c8';this.removeAttribute('src')"
+        />
+        <div class="post-body">
+          <p class="post-category">Cash Flow</p>
+          <h3 class="post-title">Simple Weekly Money Routine for Cafe Owners</h3>
+          <p class="post-excerpt">You do not need to review everything every day. Start with one simple weekly check-in that helps you make better decisions.</p>
+          <span class="post-meta">Read Post</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- NEWSLETTER BAND -->
+  <section class="newsletter-band">
+    <div class="newsletter-inner fade-up">
+      <p class="newsletter-eyebrow">Free for cafe owners</p>
+      <h2 class="newsletter-title">Get the Financial<br><em>Starter Guide.</em></h2>
+      <p class="newsletter-sub">The 5 numbers every cafe owner needs to track, a simple weekly routine, and a profit tracker — all in one free guide.</p>
+      <div class="nl-form" id="blog-nl-form">
+        <input type="email" placeholder="Your email address" id="blog-email" />
+        <button onclick="handleBlogForm()">Send My Guide</button>
+      </div>
+      <div class="nl-success" id="blog-success">You are in! Check your inbox.</div>
+      <p class="nl-note">No spam. Just clarity for your cafe.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
       <a href="index.html" class="footer-mark">Cafe Ledger</a>
       <a href="mailto:hello@cafeledger.com" class="footer-email">hello@cafeledger.com</a>
       <span class="footer-copy">&copy; 2026 Cafe Ledger. All rights reserved.</span>
-    </footer>
-  </div>
-<script async data-uid="a55e713a33" src="https://cafe-ledger.kit.com/a55e713a33/index.js"></script>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Newsletter form — Mailchimp
+    const MC_URL = 'https://gmail.us10.list-manage.com/subscribe/post-json?u=676255bf26e8d4cd5caac4292&id=7a884d4daf&f_id=00eddae5f0';
+    function handleBlogForm() {
+      const email = document.getElementById('blog-email').value.trim();
+      if (!email || !email.includes('@')) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+      const src = MC_URL + '&EMAIL=' + encodeURIComponent(email) + '&b_676255bf26e8d4cd5caac4292_7a884d4daf=&c=mcCallback';
+      window.mcCallback = function() {};
+      const s = document.createElement('script');
+      s.src = src;
+      document.body.appendChild(s);
+      setTimeout(() => { try { document.body.removeChild(s); } catch(e){} }, 3000);
+      document.getElementById('blog-nl-form').style.display = 'none';
+      document.getElementById('blog-success').style.display = 'block';
+    }
+  </script>
 
 </body>
 </html>
