@@ -605,6 +605,42 @@
     }
     .service-card.featured .service-price { color: rgba(240,237,232,0.8); border-color: rgba(255,255,255,0.12); }
 
+    /* WHO THIS IS FOR */
+    .who-inner {
+      margin: 2.5rem 0 3rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .who-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--espresso);
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .who-title em { font-style: italic; color: var(--caramel); }
+    .who-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .who-list li {
+      font-size: 15px;
+      color: var(--ink-mid);
+      font-weight: 300;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      line-height: 1.6;
+    }
+    .who-list li::before { content: "✓"; color: var(--caramel); flex-shrink: 0; font-size: 13px; margin-top: 2px; }
+
     /* LEAD MAGNET BAND */
     .lead-band {
       background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
@@ -930,27 +966,6 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="about-photo-wrap fade-up">
-      <img src="./Johnnita.jpg" alt="Johnnita Bros, Founder of Cafe Ledger" class="about-photo" />
-      <div class="about-photo-card">
-        <strong>Johnnita Bros</strong>
-        <span>Founder, Cafe Ledger</span>
-      </div>
-    </div>
-    <div class="fade-up" style="transition-delay:0.15s">
-      <p class="about-eyebrow">Why I built this</p>
-      <h2 class="about-title">Fortune 500 finance experience.<br><em>Built for your cafe.</em></h2>
-      <p class="about-body">I spent over a decade at Fortune 500 companies managing budgets, analyzing numbers, and helping leadership make smarter financial decisions.</p>
-      <p class="about-body">Then I looked at the coffee shops and bakeries I loved and saw a real gap. The owners doing all that hard, creative work deserved the same financial clarity I was helping corporations achieve. The knowledge existed. It just was not being brought to them in a way that actually worked for their world.</p>
-      <div class="about-quote">
-        "You shouldn't need an accounting degree to understand whether your cafe is actually making money."
-      </div>
-      <p class="about-body">So I built Cafe Ledger. Simple tools, clear reporting, and real support designed around how cafes and bakeries actually operate.</p>
-    </div>
-  </section>
-
   <!-- HOW IT WORKS -->
   <section class="how" id="tools">
     <div class="how-inner">
@@ -981,10 +996,42 @@
     </div>
   </section>
 
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-photo-wrap fade-up">
+      <img src="./Johnnita.jpg" alt="Johnnita Bros, Founder of Cafe Ledger" class="about-photo" />
+      <div class="about-photo-card">
+        <strong>Johnnita Bros</strong>
+        <span>Founder, Cafe Ledger</span>
+      </div>
+    </div>
+    <div class="fade-up" style="transition-delay:0.15s">
+      <p class="about-eyebrow">Why I built this</p>
+      <h2 class="about-title">Fortune 500 finance experience.<br><em>Built for your cafe.</em></h2>
+      <p class="about-body">I spent over a decade at Fortune 500 companies managing budgets, analyzing numbers, and helping leadership make smarter financial decisions.</p>
+      <p class="about-body">Then I looked at the coffee shops and bakeries I loved and saw a real gap. The owners doing all that hard, creative work deserved the same financial clarity I was helping corporations achieve. The knowledge existed. It just was not being brought to them in a way that actually worked for their world.</p>
+      <div class="about-quote">
+        "You shouldn't need an accounting degree to understand whether your cafe is actually making money."
+      </div>
+      <p class="about-body">So I built Cafe Ledger. Simple tools, clear reporting, and real support designed around how cafes and bakeries actually operate.</p>
+    </div>
+  </section>
+
   <!-- SERVICES -->
   <section class="services" id="services">
     <p class="section-eyebrow fade-up">Work with me</p>
     <h2 class="section-title fade-up">Support at every stage</h2>
+    <!-- WHO THIS IS FOR -->
+    <div class="who-inner fade-up">
+      <p class="section-eyebrow">A good fit</p>
+      <h3 class="who-title">Built for owners <em>like you.</em></h3>
+      <ul class="who-list">
+        <li>Cafes and bakeries doing $500K to $3M in annual revenue</li>
+        <li>Owners who want to genuinely understand their numbers</li>
+        <li>Operators ready to improve margins and take control of costs</li>
+      </ul>
+    </div>
+
     <div class="services-grid">
       <div class="service-card fade-up">
         <p class="service-num">Stage I</p>
