@@ -433,10 +433,9 @@
       margin: 3rem auto 0;
       padding: 2.5rem 2rem;
       border-top: 1px solid var(--rule);
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 0 4rem;
-      align-items: start;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
     }
     .who-title {
       font-family: 'Cormorant Garamond', Georgia, serif;
@@ -451,7 +450,6 @@
       display: flex;
       flex-direction: column;
       gap: 0.85rem;
-      margin-top: 1.5rem;
     }
     .who-list li {
       font-size: 15px;
@@ -663,6 +661,10 @@
       .addons-inner { grid-template-columns: 1fr; gap: 2rem; }
       .addons-heading { font-size: 36px; position: static; }
       .addons-list li { grid-template-columns: 1fr; gap: 0.4rem; }
+
+      .who-inner { padding: 2rem 1.25rem; margin-top: 2rem; }
+      .who-title { font-size: 26px; }
+      .who-list { margin-top: 0; }
 
       .cta-band { padding: 4rem 1.25rem; }
       .cta-buttons { flex-direction: column; align-items: center; }
