@@ -369,6 +369,25 @@
     .card-list li:last-child { border-bottom: none; }
     .card-list li::before { content: "—"; color: var(--green); flex-shrink: 0; font-size: 12px; margin-top: 2px; }
     .pricing-card.featured .card-list li::before { color: rgba(240,237,232,0.4); }
+    .card-outcome {
+      font-size: 13px;
+      color: var(--green-dark);
+      font-weight: 400;
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--rule);
+      line-height: 1.7;
+      font-style: italic;
+    }
+    .pricing-card.featured .card-outcome { color: rgba(240,237,232,0.75); border-color: rgba(255,255,255,0.1); }
+    .card-nudge {
+      font-size: 12px;
+      color: var(--ink-light);
+      font-weight: 400;
+      margin-top: 0.6rem;
+      letter-spacing: 0.02em;
+    }
+    .pricing-card.featured .card-nudge { color: rgba(240,237,232,0.55); }
     .card-footer {
       padding: 1.5rem 2rem 2rem;
     }
@@ -407,6 +426,43 @@
       width: 100%;
     }
     .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+    /* WHO THIS IS FOR */
+    .who-inner {
+      max-width: 1100px;
+      margin: 3rem auto 0;
+      padding: 2.5rem 2rem;
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0 4rem;
+      align-items: start;
+    }
+    .who-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 32px;
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+    .who-title em { font-style: italic; color: var(--green); }
+    .who-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-top: 1.5rem;
+    }
+    .who-list li {
+      font-size: 15px;
+      color: var(--ink-mid);
+      font-weight: 300;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      line-height: 1.6;
+    }
+    .who-list li::before { content: "✓"; color: var(--green); flex-shrink: 0; font-size: 13px; margin-top: 2px; }
 
     /* ADD ONS */
     .addons {
@@ -755,14 +811,25 @@
       <h2 class="section-title">Find the right<br><em>level of support.</em></h2>
     </div>
 
+    <!-- WHO THIS IS FOR -->
+    <div class="who-inner fade-up">
+      <p class="section-eyebrow">A good fit</p>
+      <h3 class="who-title">Who this is <em>for.</em></h3>
+      <ul class="who-list">
+        <li>Cafes and bakeries doing $500K to $3M in annual revenue</li>
+        <li>Owners who want to genuinely understand their numbers</li>
+        <li>Operators ready to improve margins and take control of costs</li>
+      </ul>
+    </div>
+
     <div class="pricing-grid">
 
       <!-- STAGE I -->
       <article class="pricing-card fade-up">
         <div class="card-top">
           <p class="stage-label">Stage I</p>
-          <h3 class="card-title">Start with Clarity</h3>
-          <p class="card-fit">For shops getting a handle on their numbers</p>
+          <h3 class="card-title">Clarity</h3>
+          <p class="card-fit">For cafe owners who need clean books and a clear view of where their money stands</p>
         </div>
         <div class="card-price">
           <span class="price-amount">$600</span>
@@ -770,13 +837,15 @@
         </div>
         <p class="price-setup">+ $150 one-time setup fee</p>
         <div class="card-body">
-          <p class="card-desc">Organized books and a clear weekly view of sales, labor, costs, and cash. A clean starting point.</p>
           <ul class="card-list">
-            <li>Monthly bookkeeping and clean records</li>
-            <li>Simple profit and cash flow reporting</li>
-            <li>Weekly tracker setup</li>
-            <li>Clear breakdown of where money goes</li>
+            <li>Monthly bookkeeping and reconciliations</li>
+            <li>Clean, organized financial records</li>
+            <li>Monthly profit and cash flow snapshot</li>
+            <li>Weekly tracker for sales, labor, and key costs</li>
+            <li>See exactly where your money is going each month</li>
+            <li>Email support — 48-hour response</li>
           </ul>
+          <p class="card-outcome">You have accurate, reliable numbers and no more guessing where things stand.</p>
         </div>
         <div class="card-footer">
           <a href="#apply" class="btn-green">Apply to Work Together</a>
@@ -787,22 +856,25 @@
       <article class="pricing-card featured fade-up" style="transition-delay:0.1s">
         <div class="card-top">
           <p class="stage-label">Stage II — Most Popular</p>
-          <h3 class="card-title">Build Control</h3>
-          <p class="card-fit">For shops ready to improve margins</p>
+          <h3 class="card-title">Control</h3>
+          <p class="card-fit">For cafe owners who want to understand their numbers and take control of costs</p>
         </div>
         <div class="card-price">
-          <span class="price-amount">$850</span>
+          <span class="price-amount">$950</span>
           <span class="price-period">/month</span>
         </div>
         <p class="price-setup">+ $150 one-time setup fee</p>
         <div class="card-body">
-          <p class="card-desc">Better visibility into pricing, labor, ingredients, and the small leaks draining your profit.</p>
+          <p class="card-desc">Everything in Stage I, plus:</p>
           <ul class="card-list">
-            <li>Monthly financial reports with insights</li>
+            <li>Monthly financial reports with clear insights</li>
             <li>Labor and ingredient cost review</li>
-            <li>Profit leak analysis</li>
-            <li>Ongoing support for financial questions</li>
+            <li>Profit leak identification</li>
+            <li>Basic menu and pricing support</li>
+            <li>Priority email support with faster response times</li>
           </ul>
+          <p class="card-outcome">You understand where your money is going and what needs to change to improve margins.</p>
+          <p class="card-nudge">This is where most cafe owners start seeing real financial clarity.</p>
         </div>
         <div class="card-footer">
           <a href="#apply" class="btn-outline">Apply to Work Together</a>
@@ -813,22 +885,26 @@
       <article class="pricing-card fade-up" style="transition-delay:0.2s">
         <div class="card-top">
           <p class="stage-label">Stage III</p>
-          <h3 class="card-title">Ongoing Support</h3>
-          <p class="card-fit">For growing cafes and bakeries</p>
+          <h3 class="card-title">Profit</h3>
+          <p class="card-fit">For cafe owners ready to actively improve margins and increase profitability</p>
         </div>
         <div class="card-price">
-          <span class="price-amount">$1,250</span>
+          <span class="price-amount">$1,600</span>
           <span class="price-period">/month</span>
         </div>
         <p class="price-setup">+ $150 one-time setup fee</p>
         <div class="card-body">
-          <p class="card-desc">Consistent financial oversight and structured support as your business grows.</p>
+          <p class="card-desc">Everything in Stage II, plus:</p>
           <ul class="card-list">
-            <li>Full bookkeeping and reporting</li>
-            <li>Regular financial check-ins</li>
-            <li>Pricing, costs and planning support</li>
-            <li>Clean systems to support growth</li>
+            <li>Full menu costing and pricing strategy</li>
+            <li>Deeper cost and margin analysis</li>
+            <li>Quarterly financial deep-dive review</li>
+            <li>Monthly strategy check-in call</li>
+            <li>Year-end financial package prepared for your CPA</li>
+            <li>Priority same-day email support</li>
           </ul>
+          <p class="card-outcome">You make confident financial decisions that improve profitability and keep more cash in your business.</p>
+          <p class="card-nudge">Built for owners ready to run their cafe like a business, not just operate it.</p>
         </div>
         <div class="card-footer">
           <a href="#apply" class="btn-green">Apply to Work Together</a>
@@ -836,6 +912,7 @@
       </article>
 
     </div>
+
   </section>
 
   <!-- ADD ONS -->
@@ -907,9 +984,9 @@
             <label class="form-label">Stage You Are Interested In</label>
             <select class="form-input form-select" name="stage">
               <option value="" disabled selected>Select a stage</option>
-              <option>Stage I — Start with Clarity ($600/mo)</option>
-              <option>Stage II — Build Control ($850/mo)</option>
-              <option>Stage III — Ongoing Support ($1,250/mo)</option>
+              <option>Stage I — Clarity ($600/mo)</option>
+              <option>Stage II — Control ($950/mo)</option>
+              <option>Stage III — Profit ($1,600/mo)</option>
               <option>Not sure yet</option>
             </select>
           </div>
