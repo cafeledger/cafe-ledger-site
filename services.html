@@ -634,6 +634,105 @@
     .footer-social a:hover { color: var(--cream); }
     .footer-social svg { width: 18px; height: 18px; fill: currentColor; }
 
+    /* WHAT TO EXPECT */
+    .expect {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+    .expect-header {
+      margin-bottom: 3.5rem;
+    }
+    .expect-header .section-eyebrow { margin-bottom: 0.75rem; }
+    .expect-header .section-title { margin-bottom: 1rem; }
+    .expect-sub {
+      font-size: 16px;
+      color: var(--ink-mid);
+      font-weight: 300;
+      line-height: 1.85;
+      max-width: 560px;
+    }
+    .expect-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .expect-timeline::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 7%;
+      right: 7%;
+      height: 1px;
+      background: var(--rule);
+    }
+    .expect-step {
+      padding-right: 2rem;
+      position: relative;
+    }
+    .expect-step:last-child { padding-right: 0; }
+    .expect-marker {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .expect-marker span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+    .expect-timing {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+    }
+    .expect-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+    .expect-desc {
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--ink-mid);
+      font-weight: 300;
+    }
+    .expect-closing {
+      margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--rule);
+      font-family: 'IM Fell English', Georgia, serif;
+      font-size: 17px;
+      font-style: italic;
+      color: var(--ink-mid);
+      line-height: 1.75;
+      max-width: 640px;
+    }
+    @media (max-width: 768px) {
+      .expect { padding: 4rem 1.25rem; }
+      .expect-timeline { grid-template-columns: 1fr; gap: 2.5rem; }
+      .expect-timeline::before { display: none; }
+      .expect-step { padding-right: 0; }
+    }
+
     /* ANIMATIONS */
     .fade-up {
       opacity: 0;
@@ -762,7 +861,7 @@
     <ul class="nav-links">
       <li><a href="index.html#tools">Tools</a></li>
       <li><a href="blog.html">Blog</a></li>
-      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="services.html" class="active">Pricing & Services</a></li>
       <li><a href="index.html#about">About</a></li>
     </ul>
   </nav>
@@ -784,7 +883,7 @@
           <li>Clear reports on profit, labor, and cash flow</li>
           <li>Payroll costs and tip tracking mapped clearly</li>
           <li>Practical support from a senior accountant</li>
-          <li>Simple systems that fit your real workflow</li>
+          <li>Los Angeles, CA based, working remotely with cafe owners nationwide</li>
         </ul>
         <a href="#apply" class="btn-cream">Apply to Work Together</a>
       </div>
@@ -970,6 +1069,46 @@
     </div>
   </section>
 
+
+  <!-- WHAT TO EXPECT -->
+  <section class="expect" id="what-to-expect">
+    <div class="expect-header fade-up">
+      <p class="section-eyebrow">No surprises</p>
+      <h2 class="section-title">From messy books to clear numbers<br><em>in 30 days.</em></h2>
+      <p class="expect-sub">Here is exactly what happens after you apply, step by step, so you know what you are signing up for before you ever hit submit.</p>
+    </div>
+    <div class="expect-timeline">
+
+      <div class="expect-step fade-up">
+        <div class="expect-marker"><span>Day 1</span></div>
+        <p class="expect-timing">We talk about your shop</p>
+        <h3 class="expect-title">A 30-minute call</h3>
+        <p class="expect-desc">You fill out a short application and we schedule a call. No prep needed. We talk through where your numbers stand, what feels messy, and what you actually need. By the end you know exactly which stage fits and what happens next.</p>
+      </div>
+
+      <div class="expect-step fade-up" style="transition-delay:0.1s">
+        <div class="expect-marker"><span>Week 1</span></div>
+        <p class="expect-timing">We get your books in order</p>
+        <h3 class="expect-title">Setup and connection</h3>
+        <p class="expect-desc">I set up your chart of accounts, connect to your POS system (Toast, Square, or whatever you use) and sync with QuickBooks. If your books need cleanup from prior months, I tell you upfront what that looks like. No surprises.</p>
+      </div>
+
+      <div class="expect-step fade-up" style="transition-delay:0.2s">
+        <div class="expect-marker"><span style="font-size:11px;">Wk 2–3</span></div>
+        <p class="expect-timing">You start seeing clearly</p>
+        <h3 class="expect-title">Your first real report</h3>
+        <p class="expect-desc">Your first monthly report lands in your inbox. Not a wall of spreadsheet, but a clear snapshot of where your money came from, where it went, and what to pay attention to. We walk through it together so nothing gets lost in translation.</p>
+      </div>
+
+      <div class="expect-step fade-up" style="transition-delay:0.3s">
+        <div class="expect-marker"><span>Day 30</span></div>
+        <p class="expect-timing">You know where you stand</p>
+        <h3 class="expect-title">In control of your numbers</h3>
+        <p class="expect-desc">Clean books, a weekly tracker that takes ten minutes to update, and a clear picture of your profit, labor cost, and cash flow. Most owners tell me this is the first time they have felt in control of their numbers.</p>
+      </div>
+
+    </div>
+  </section>
 
   <!-- APPLICATION FORM -->
   <section class="apply-section" id="apply">
