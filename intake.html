@@ -656,13 +656,16 @@
       <!-- SUBMIT -->
       <hr class="divider" />
       <div class="submit-area">
-        <button type="submit" id="submit-btn">Submit Intake Form</button>
+        <button type="submit" id="submit-btn" data-fs-submit-btn>Submit Intake Form</button>
       </div>
 
     </form>
 
+    <!-- ERROR -->
+    <div data-fs-error style="color: var(--error); font-size: 0.875rem; margin-top: 1rem;"></div>
+
     <!-- SUCCESS -->
-    <div id="success-message">
+    <div id="success-message" data-fs-success>
       <h3>You are all set.</h3>
       <p>Your intake has been received.</p>
     </div>
@@ -687,39 +690,10 @@
       label.textContent = this.files[0] ? this.files[0].name : '';
     });
 
-    // Form submission
-    const form = document.getElementById('intake-form');
-    const btn = document.getElementById('submit-btn');
-    const success = document.getElementById('success-message');
-
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      btn.disabled = true;
-      btn.textContent = 'Sending...';
-
-      try {
-        const data = new FormData(form);
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (res.ok) {
-          form.style.display = 'none';
-          success.style.display = 'block';
-        } else {
-          btn.disabled = false;
-          btn.textContent = 'Submit Intake Form';
-          alert('Something went wrong. Please try again or email hello@cafeledger.com.');
-        }
-      } catch {
-        btn.disabled = false;
-        btn.textContent = 'Submit Intake Form';
-        alert('Something went wrong. Please try again or email hello@cafeledger.com.');
-      }
-    });
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#intake-form', formId: 'mykqbbke' });
   </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 </body>
 </html>
