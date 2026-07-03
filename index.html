@@ -1241,24 +1241,35 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    const MC_URL = 'https://gmail.us10.list-manage.com/subscribe/post-json?u=676255bf26e8d4cd5caac4292&id=7a884d4daf&f_id=00eddae5f0';
+ async function submitToMailerLite(email, fname, formId, successId) {
+  if (!email || !email.includes('@')) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+  try {
+    const response = await fetch('https://connect.mailerlite.com/api/subscribers', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiMmE1ZGYyN2UzNDg3OGRlZGMxYWZiZGQyOWFmYjgwMzJiYzEyMmQzMTE4YTA3ZTNiYzMzMmJmMGY4ODYwMTQ2ZTlmNTg1ZGZmMjY5NDllM2QiLCJpYXQiOjE3ODMxMDIzMDEuNDA4OTc2LCJuYmYiOjE3ODMxMDIzMDEuNDA4OTgxLCJleHAiOjQ5Mzg3NzU5MDEuMzk2NDY0LCJzdWIiOiIyNTA1ODQyIiwic2NvcGVzIjpbXX0.bPIHPcNKhFYHOfstyLfqVzHOXNnLPGIw-0-9FrN6C-ea4-S-QRnS7OssunlkPvPEhw_7M5ZOkF8gQEWLTYEupkNvpFVZ8J1aWt38BgQzoLmCxwdM1qkx0J6alqxMdNDH9CucYiGm22_PTuTFh-n7CFRvYTfwVbpx6gGkvdUx8BlIZMJ6XaVbukyC-zLDQhSXDz-C_N16EPtQeWwY8h_aX-iGU2KisRfRAFxxLk25kwS8DflPTpp-501ESs4mwVSgYzN3d-poi1prKWouqCkqbmc8rbsA9ag_iZE-0iCUsDlDRAYE_SDG2Fn112CSbIHhzlnvinRVagREaXLfF8GRgOZuC75iswJr0s1rfcriXiQFnSKFKDj-yDaqFuMnIjZwYm1vJlNjuU8ZxsG-vbgeA2PXGs4nJEOC5o9cvjt9YidZPsov_dVzqzhs1ySTnwZ7rmxX9rXP05LVU0f-FrTC-pQ3A2duDHzYEQBjdGC-iDyDaBRQ5fhfjAmZYGK-7KKfRcs58BoW9JY2m1CgDSjhl5cLdEloyc6AlmUGZqMg4FqgB8oIgUB3a1jUhj0fSMz8s8cxZREpNv_wtKjbIhAK1UEnGAmCA3dDrV_SNLebvFLR6hSiRmsnUrNrJXmitzC__oCFRylg03oKnPSuOQsRwYaoyQ-UgMEaH6K5t4WYfVM'
+      },
+      body: JSON.stringify({
+        email: email,
+        fields: { name: fname },
+        groups: ['191997137607722921']
+      })
+    });
+    document.getElementById(formId).style.display = 'none';
+    document.getElementById(successId).style.display = 'block';
+  } catch(error) {
+    alert('Something went wrong. Please try again.');
+  }
+}
 
-    function submitToMailchimp(email, fname, formId, successId) {
-      if (!email || !email.includes('@')) {
-        alert('Please enter a valid email address.');
-        return;
-      }
-      let src = MC_URL + '&EMAIL=' + encodeURIComponent(email);
-      if (fname) src += '&FNAME=' + encodeURIComponent(fname);
-      src += '&b_676255bf26e8d4cd5caac4292_7a884d4daf=&c=mcCallback';
-      window.mcCallback = function() {};
-      const s = document.createElement('script');
-      s.src = src;
-      document.body.appendChild(s);
-      setTimeout(() => { try { document.body.removeChild(s); } catch(e){} }, 3000);
-      document.getElementById(formId).style.display = 'none';
-      document.getElementById(successId).style.display = 'block';
-    }
+function submitToMailchimp(email, fname, formId, successId) {
+  submitToMailerLite(email, fname, formId, successId);
+}
 
     function handleHeroForm() {
       const name = document.getElementById('hero-name').value.trim();
